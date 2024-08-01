@@ -14,6 +14,9 @@ module.exports = {
         inter: ['Inter', 'sans-serif'],
         poppins: ['Poppins', 'sans-serif'], 
       },
+      fontWeight: {
+        semiBold: 600,
+      }
     },
   },
   plugins: [],

@@ -19,6 +19,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Inter';
+  src: url('../fonts/Inter-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
 
 
 .glassmorphic {
@@ -31,4 +38,13 @@ backdrop-filter: blur(16px);
 .gradient-circle {
   background: linear-gradient(180deg, #7B4EE6 0%, #442B80 100%);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.img-container {
+  background-size: 70%;
+  opacity: 50%;
+}
+
+.shadow-outline {
+  box-shadow: 0 0 0 4px white; /* Adjust the offset, blur, and color as needed */
 }
