@@ -42,9 +42,4 @@ backdrop-filter: blur(16px);
 
 .img-container {
   background-size: 70%;
-  opacity: 50%;
-}
-
-.shadow-outline {
-  box-shadow: 0 0 0 4px white; /* Adjust the offset, blur, and color as needed */
 }
