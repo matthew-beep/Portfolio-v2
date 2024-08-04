@@ -6,6 +6,13 @@
 }
 
 @font-face {
+  font-family: 'Poppins';
+  src: url('../fonts/Poppins-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
   font-family: 'Inter';
   src: url('../fonts/Inter-Regular.ttf') format('truetype');
   font-weight: 400;
@@ -33,7 +40,10 @@ background: linear-gradient(180deg, rgba(49, 61, 77, 0.37) 0%, rgba(22, 27, 34, 
 border: 1px solid rgba(88, 88, 88, 0.533333);
 box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.3), 0px 5px 10px rgba(0, 0, 0, 0.5);
 backdrop-filter: blur(16px);
+-webkit-backdrop-filter: blur( 10px );
 }
+
+
 
 .gradient-circle {
   background: linear-gradient(180deg, #7B4EE6 0%, #442B80 100%);
@@ -42,4 +52,25 @@ backdrop-filter: blur(16px);
 
 .img-container {
   background-size: 70%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+.card {
+  border: 0.5px solid rgba(88, 88, 88, 0);
+}
+.card:hover {
+  background: linear-gradient(180deg, rgba(49, 61, 77, 0.37) 0%, rgba(22, 27, 34, 0.37) 100%);
+  border: 0.5px solid rgba(88, 88, 88, 0.35);
+  box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.3), 0px 5px 10px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur( 10px );
+  transition: 0.1s ease-in-out;
+}
+
+.card:hover + h3 {
+  color: '#7B4EE6';
 }
