@@ -1,8 +1,8 @@
 
 'use client';
 import './fonts.css';
-import { useState, useEffect } from "react";
-import { motion, useScroll, useMotionValueEvent, useTransform } from 'framer-motion';
+import { useState, useEffect, useRef } from "react";
+import { motion, useScroll, useMotionValueEvent, useTransform, useInView, inView } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import Card from './card';
 import Pill from './pill';
@@ -12,21 +12,25 @@ import Link  from 'next/link'
 import img from '../../public/img/VizDAS-home.png'
 export default function Portfolio() {
   // need to add nav bar outside of main
+  const fullBlur = '30px';
+  const fullOpaque = '50%';
+  // const hash = window.location.hash;
   const [blurVal, setBlurVal] = useState(0);
   const [modalOpacity, setModalOpacity] = useState();
   const { scrollY } = useScroll()
-  const blur = useTransform(scrollY, [400, 1000], ['0px', '10px']);
-  const modal = useTransform(scrollY, [400, 1000], ['0%', '40%']);
-  
-  
+  const blur = useTransform(scrollY, [400, 1000], ['0px', fullBlur]);
+  const modal = useTransform(scrollY, [400, 1000], ['0%', fullOpaque]);
+
+  console.log('blur: ' + blurVal)
   useMotionValueEvent(scrollY, "change", (latest) => {
     setBlurVal(blur.get());
     setModalOpacity(modal.get());
   })
-
+  
   useEffect(() => {
     // Check initial scroll position on component mount
     const handleInitialScroll = () => {
+      console.log("Initial scroll");
       const initialScrollY = window.scrollY;
       setBlurVal(blur.get());
       setModalOpacity(modal.get());
@@ -34,7 +38,7 @@ export default function Portfolio() {
 
     // Trigger the initial scroll check
     console.log(window.scrollY);
-    if(window.scrollY > 0) {
+    if(window.scrollY > 0 ) {
       console.log('load blur');
       handleInitialScroll();
     }
@@ -68,6 +72,18 @@ export default function Portfolio() {
       description: 'An analysis of the Internet Movie Database\'s information architecture. Includes a collection of recommendations for improvement on IMDb\'s hierarchy of information related to labels, search, navigation, site mapping, etc.',
       image: '/img/imdb_svg.svg',
       link: 'https://github.com/matthew-beep/'
+    },
+    {
+      name: 'VizDAS',
+      description: 'The first ever public facing Distributed Acoustic Sensing research tool. Built in collaboration with UW\'s Earth and Space Science Department and recognized as a Research Award Finalist at the iSchool Capstone Gala.',
+      image: '/img/vizdas.png',
+      link: 'https://github.com/matthew-beep/project1'
+    },
+    {
+      name: 'IMDb Redesign',
+      description: 'An analysis of the Internet Movie Database\'s information architecture. Includes a collection of recommendations for improvement on IMDb\'s hierarchy of information related to labels, search, navigation, site mapping, etc.',
+      image: '/img/imdb_svg.svg',
+      link: 'https://github.com/matthew-beep/'
     }
   ];
 
@@ -82,7 +98,7 @@ export default function Portfolio() {
 
   return (
     <div className='relative flex flex-col'>
-      <section className="h-screen w-full flex justify-center items-start sticky top-0 z-10 relative overflow-x-clip">
+      <section id="home" className="h-screen w-full flex justify-center items-start sticky top-0 z-10 relative overflow-x-clip">
         <motion.div 
           className='z-50 absolute w-screen h-screen'
           style={{
@@ -269,23 +285,21 @@ export default function Portfolio() {
                 <FontAwesomeIcon icon={faChevronDown} className='text-xl'/>
               </motion.div>
             </motion.div>
-            <div className="hidden md:block absolute w-72 h-72 bg-white rounded-full bottom-0 right-0 translate-x-1/2 translate-y-1 gradient-circle z-0"></div>
+            <div className="hidden md:block absolute w-72 h-72 mb-1 bg-white rounded-full bottom-0 right-0 translate-x-1/2 translate-y-1 gradient-circle z-0"></div>
           </div>
       </section>
       
-      <section id="projects" className='h-screen z-20 flex justify-center items-start pt-64 relative text-white sticky top-0'>
-        <div className='bg-[#161B22] w-10/12 h-full absolute rounded-lg border-2 border-solid border-[#585858] shadow-xl p-10'>
-          <h3>My Projects</h3>
-          <div className='w-full flex justify-between px-20'>
-            {projects.map(project => (
-              <Card content={project}/>
+      <section id="projects" className='min-h-screen h-auto z-20 flex justify-center items-start pt-64 pb-20 relative text-white sticky top-0'>
+        <div id="file"className='flex flex-col gap-2 project-section bg-[#161B22] w-11/12 md:w-9/12 h-auto rounded-lg md:py-10 md:px-20 py-5'>
+          <h3 className='pl-5 border-2 border-white border-solid font-poppins font-bold text-3xl'>My Projects</h3>
+          <div className='border-2 m-auto w-full flex-col items-center flex md:flex-row xl:justify-between justify-center h-auto flex-wrap'>
+            {projects.map((project, i) => (
+              <Card content={project} key={i}/>
             ))}              
           </div>
         </div>
       </section>
-      <section className='h-screen sticky top-0 bg-white z-100 '>
-  
-      </section>
+
     </div>
   );
 }

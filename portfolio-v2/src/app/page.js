@@ -8,6 +8,7 @@ import { motion, useScroll, useTransform, useSpring, useMotionValueEvent } from 
 import Portfolio from './portfolio';
 import NavBar from './header';
 import Link from 'next/link';
+import Footer from './footer';
 export default function Home() {
   const { scrollY } = useScroll();
   const [scrolling, setScrolling] = useState(false);
@@ -64,7 +65,7 @@ export default function Home() {
     
     <div className='bg-[#161B22] relative'>
       
-      <NavBar/>
+      <NavBar home={'#home'}/>
       <motion.div 
         className='hidden md:block glassmorphic py-1 px-1 rounded-l-lg right-0 fixed z-50 right-0 top-1/2'
         style={{y:initialScroll ? '0px' : scrollSpring}}
@@ -89,9 +90,10 @@ export default function Home() {
           </li>
         </ul>
       </motion.div>
-      <main className='z-10'>
+      <main id='home'className='z-10'>
         <Portfolio />
       </main>
+      <Footer />
     </div>
   );
 }
