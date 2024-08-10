@@ -3,9 +3,10 @@
 import './fonts.css';
 import { useState, useRef } from "react";
 import { motion, useScroll, useMotionValueEvent, useTransform } from 'framer-motion';
-import { TypeAnimation } from 'react-type-animation';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import Pill from './pill';
 
 export default function Card({content}) {
   const [isHovered, setIsHovered] = useState(false);
@@ -40,24 +41,22 @@ export default function Card({content}) {
   }
 
   return (
-    <div className='w-11/12 flex flex-col xl:w-6/12 xl:px-10 py-5'>
+    <div className='w-11/12 flex flex-col xl:w-6/12 px-10 items-start justify-center'>
       <motion.div 
         className='card flex flex-col p-3 gap-4 rounded-lg cursor-pointer my-5'
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-
       >
         <motion.div 
-          className='w-full h-72 rounded-3xl'
+          className='w-full h-72 rounded-3xl overflow-hidden'
           variants={childVar}
           initial={{border: '3px solid rgba(88, 88, 88, 0.3)'}}
           animate={isHovered ? 'imageHover' : ''}
-      
         >
-          <img src={require=(content.image)} className='h-full w-full rounded-3xl object-cover'/>
+          <img src={require=(content.image)} className='h-full w-full object-cover rounded-sm'/>
         </motion.div>
         <div className='flex gap-1 items-end project-title items-center'>
-          <h3 id="title" className='font-poppins font-bold text-2xl'>{content.name}</h3>
+          <h3 id="title" className='font-poppins font-bold text-2xl'>{content.name}</h3>          
           <motion.div
           className="h-auto flex items-start"
             variants={childVar}
@@ -67,8 +66,13 @@ export default function Card({content}) {
             <FontAwesomeIcon className="text-xl arrow-link" icon={faArrowRight}/>
           </motion.div>
         </div>
+        <div className='flex flex-wrap h-full w-full items-center gap-4'>
+            {content.skills.map((skill, i) => (
+                <Pill skills={skill} key={i}/>
+            ))}   
+        </div>
     
-        <p className='font-inter text-lg'>{content.description}</p>
+        <p className='mt-3 font-inter text-lg min-h-32 max-h-36'>{content.description}</p>
       </motion.div>
     </div>
   );
