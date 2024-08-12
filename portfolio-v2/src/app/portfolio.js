@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import Link  from 'next/link'
 import Projects from './projects';
-export default function Portfolio() {
+export default function Portfolio({ onHeightChange }) {
   // need to add nav bar outside of main
   const fullBlur = '30px';
   const fullOpaque = '50%';
@@ -20,7 +20,16 @@ export default function Portfolio() {
   const { scrollY } = useScroll()
   const blur = useTransform(scrollY, [200, 1000], ['0px', fullBlur]);
   const modal = useTransform(scrollY, [200, 1000], ['0%', fullOpaque]);
-
+  
+  const ref = useRef(null);
+  useEffect(() => {
+    // Set the height of the element
+    if (ref.current) {
+      const rect = ref.current.getBoundingClientRect();
+      onHeightChange(rect.height); // Call the function
+      console.log(rect.height);
+    }
+  }, [onHeightChange]);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setBlurVal(blur.get());
@@ -116,7 +125,7 @@ export default function Portfolio() {
 
   return (
     <div className='relative flex flex-col'>
-      <section id="home" className="h-screen w-full flex justify-center items-start sticky top-0 z-10 relative overflow-x-clip">
+      <section ref={ref} id="home" className="h-screen w-full flex justify-center items-start sticky top-0 z-10 relative overflow-x-clip">
         <motion.div 
           className='z-50 absolute w-screen h-screen'
           style={{
@@ -137,7 +146,6 @@ export default function Portfolio() {
                 x: 0,
                 opacity: 1
               }}
-
             >
               <div className='flex flex-col'>
                 <motion.div 

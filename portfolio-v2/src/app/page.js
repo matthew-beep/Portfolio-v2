@@ -1,10 +1,10 @@
 
 'use client';
 import './fonts.css';
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import { motion, useScroll, useTransform, useSpring, useMotionValueEvent } from 'framer-motion';
+import { motion, useScroll, useTransform, useSpring, useAnimate} from 'framer-motion';
 import Portfolio from './portfolio';
 import NavBar from './header';
 import Link from 'next/link';
@@ -18,22 +18,34 @@ export default function Home() {
   const [initialScroll, setInitialScroll] = useState(true);
   const [pageHeight, setPageHeight] = useState(0);
 
+  const ref = useRef(null);
+
+  const [scope, animate] = useAnimate();
 
   
+  const animations = {
+    up: {y:-10},
+    down: {y:10},
+    stop: {y:0}
+  };
 
-    const translateY = useTransform(scrollY, [0, 1000], ['0px', translate]);
+  const translateY = useTransform(scrollY, [0, 1000], ['0px', translate]);
 
-    const scrollSpring = useSpring(translateY, { stiffness: 300, damping: 100 });
+  const scrollSpring = useSpring(translateY, { stiffness: 300, damping: 100 });
 
-    useEffect(() => {
+    useEffect(() => { // detect scroll direction
       const handleScroll = () => {
         if (scrollY.get() > prevScrollY) {
           setScrollDirection('down');
           setTranslate('-100px')
-          
+          //console.log('Scrolling down');
+          animate(scope.current, 
+            {y:'-100px'})
         } else {
           setScrollDirection('up');
           setTranslate('100px')
+          animate(scope.current, {y:'100px'})
+          //console.log('Scrolling up');
         }
         setPrevScrollY(scrollY.get());
       };
@@ -41,34 +53,65 @@ export default function Home() {
       handleScroll();
     }, [scrolling, scrollY]);
 
-    // Update scrolling state based on scroll activity
-    useEffect(() => {
+    useEffect(() => { // detect scrolling
+      let scrollTimeout;
+  
       const handleScroll = () => {
-        setScrolling(true);
-        setInitialScroll(false);
-        clearTimeout(scrollTimeout);
+        console.log('Scroll event detected');
+        
+        if (!scrolling) {
+          console.log('User started scrolling');
+          setScrolling(true);
+        }
+  
+        // Clear the previous timeout
+        if (scrollTimeout) {
+          clearTimeout(scrollTimeout);
+        }
+  
+        // Set a new timeout to detect scroll end
         scrollTimeout = setTimeout(() => {
+          console.log('User stopped scrolling');
           setScrolling(false);
-        }, 100);
+        }, 150); // Adjust the delay as needed
       };
   
-      let scrollTimeout;
+      // Add the scroll event listener
+      console.log('Adding scroll event listener');
       window.addEventListener('scroll', handleScroll);
   
+      // Clean up event listener on component unmount
       return () => {
+        console.log('Removing scroll event listener');
         window.removeEventListener('scroll', handleScroll);
-        clearTimeout(scrollTimeout);
+        if (scrollTimeout) {
+          clearTimeout(scrollTimeout);
+        }
       };
-    }, []);
+    }, [scrolling]);
+
+    useEffect(() => {
+      if (!scrolling) {
+        animate(scope.current, {
+          y:'0px',              
+          transition: {
+            type:"spring",
+            duration: 1,
+            ease: 'easeOut'
+          }
+        })
+        console.log("go back to 0");
+      }
+    }, [scrolling]);
 
   return (
     
     <div className='bg-[#161B22] relative'>
       
-      <NavBar home={'#home'}/>
+      <NavBar home={'#home'} height={pageHeight}/>
       <motion.div 
         className='hidden md:block glassmorphic py-1 px-1 rounded-l-lg right-0 fixed z-50 right-0 top-1/2'
-        style={{y:initialScroll ? '0px' : scrollSpring}}
+        ref={scope}
         initial={{
           x: 100,
           filter:'blur(10px)',
@@ -91,7 +134,7 @@ export default function Home() {
         </ul>
       </motion.div>
       <main id='home'className='z-10'>
-        <Portfolio />
+        <Portfolio onHeightChange={setPageHeight}/>
       </main>
       <Footer />
     </div>

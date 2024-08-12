@@ -1,16 +1,25 @@
 
 'use client';
 // import './fonts.css';
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { TypeAnimation } from 'react-type-animation';
 import { motion } from 'framer-motion';
 import Journey from './journey';
-export default function About() {
+export default function About({ onHeightChange }) {
 
+  const ref = useRef(null);
+  useEffect(() => {
+    // Set the height of the element
+    if (ref.current) {
+      const rect = ref.current.getBoundingClientRect();
+      onHeightChange(rect.height); // Call the function
+      console.log("about height: " + rect.height);
+    }
+  }, [onHeightChange]);
 
   // need to add nav bar outside of main
   return (
-    <div className='flex h-screen w-screen flex-col md:flex-row-reverse md:pt-64'>
+    <div ref={ref} className='flex h-screen w-full flex-col-reverse md:flex-row-reverse md:pt-64'>
       <div className="w-full border-2 flex-col flex gap-4">
         <div>
           <h3 className="flex font-inter text-[#7B4EE6] text-2xl mb-1">
@@ -44,7 +53,10 @@ export default function About() {
         <Journey />
       </div>
       <div className="w-full border-2">
-        Image
+        <div className="w-8 h-8 border-2"></div>
+        <div className="w-8 h-8 border-2"></div>
+        <div className="w-8 h-8 border-2"></div>
+        <div className="w-8 h-8 border-2"></div>
       </div>
     </div>
   );
