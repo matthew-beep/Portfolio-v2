@@ -89,3 +89,6 @@ html {
   border: 3px solid rgba(88, 88, 88, 0.3);
 }
 
+input, textarea {
+  background-color: rgba(255, 255, 255, 0.10);
+}

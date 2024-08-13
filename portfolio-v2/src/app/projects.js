@@ -30,16 +30,18 @@ export default function Projects({ work }) {
 
   // need to add nav bar outside of main
   return (
-    <section ref={ref}  id="projects" className='min-h-screen h-auto z-20 flex justify-center items-start pt-64 pb-20 relative text-white sticky top-0 border-2'>
+    <section ref={ref}  id="projects" className='min-h-screen h-auto z-20 flex justify-center items-start pt-64 pb-20 relative text-white sticky top-0'>
       {file &&
         <motion.div 
           id="file"
           className='flex flex-col gap-2 project-section bg-[#161B22] w-11/12 md:w-9/12 h-auto rounded-lg md:py-10 md:px-10 py-5 border-2'
           initial={{
             y: '400px',
+            filter: 'blur(20px)'
           }}
           animate={{ 
             y: '0px',
+            filter: 'blur(0px)'
           }}
           transition={{
             type: 'spring',
