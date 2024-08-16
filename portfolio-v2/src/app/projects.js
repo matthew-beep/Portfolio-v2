@@ -31,10 +31,9 @@ export default function Projects({ work }) {
   // need to add nav bar outside of main
   return (
     <section ref={ref}  id="projects" className='min-h-screen h-auto z-20 flex justify-center items-start pt-64 pb-20 relative text-white sticky top-0'>
-      {file &&
         <motion.div 
           id="file"
-          className='flex flex-col gap-2 project-section bg-[#161B22] w-11/12 md:w-9/12 h-auto rounded-lg md:py-10 md:px-10 py-5 border-2'
+          className='flex flex-col gap-2 project-section bg-[#161B22] w-11/12 md:w-9/12 h-auto rounded-lg md:py-10 md:px-10 py-5 border-2 relative'
           initial={{
             y: '400px',
             filter: 'blur(20px)'
@@ -50,7 +49,12 @@ export default function Projects({ work }) {
           }}
           onViewportEnter={() => startType(true)}
         >
-          <h3 className="flex font-inter text-[#7B4EE6] text-2xl mb-1">
+          <div className='w-16 h-16 rounded-full absolute bg-[#161B22] top-0 left-1/2 -translate-y-1/2 -translate-x-1/2 flex border-t-1'>
+            <div className='w-full h-full flex items-center justify-center '>
+              Top
+            </div>
+          </div>
+          <h3 className="flex font-inter text-[#7B4EE6] text-2xl mb-1 px-10">
             {type && <TypeAnimation
               sequence={[
                 'MY PORTFOLIO',
@@ -74,14 +78,14 @@ export default function Projects({ work }) {
               |
             </motion.div>
           </h3>
-          <h2 className='font-poppins font-bold text-5xl'>Projects</h2>
+          <h2 className='font-poppins font-bold text-5xl px-10'>Projects</h2>
           <div className='m-auto w-full flex-col items-center flex md:flex-row xl:justify-between justify-center h-auto flex-wrap'>
             {work.map((project, i) => (
               <Card content={project} key={i}/>
             ))}              
           </div>
         </motion.div>
-      }
+      
     </section>
   );
 }

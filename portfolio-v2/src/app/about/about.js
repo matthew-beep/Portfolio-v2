@@ -52,11 +52,13 @@ export default function About({ onHeightChange }) {
         </div>
         <Journey />
       </div>
-      <div className="w-full border-2">
-        <div className="w-8 h-8 border-2"></div>
-        <div className="w-8 h-8 border-2"></div>
-        <div className="w-8 h-8 border-2"></div>
-        <div className="w-8 h-8 border-2"></div>
+      <div className="w-full border-2 flex items-center justify-center">
+        <div className="w-56 relative border-2 h-96">
+          <div className="w-56 h-96 rounded-lg bg-white absolute z-40"></div>
+          <div className="w-56 h-96 rounded-lg bg-[#7B4EE6] absolute z-30 -rotate-6"></div>
+          <div className="w-56 h-96 rounded-lg bg-[#464153] absolute z-20 rotate-6 -translate-y-2"></div>
+          <div className="w-56 h-96 rounded-lg bg-[#8474A8] absolute z-10 -translate-y-2 -translate-x-2 -rotate-1"></div>
+        </div>
       </div>
     </div>
   );
