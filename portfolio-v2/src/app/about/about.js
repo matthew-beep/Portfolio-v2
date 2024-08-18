@@ -5,9 +5,41 @@ import { useState, useEffect, useRef } from "react";
 import { TypeAnimation } from 'react-type-animation';
 import { motion } from 'framer-motion';
 import Journey from './journey';
+import AboutCard from './about-card';
 export default function About({ onHeightChange }) {
 
   const ref = useRef(null);
+  const [cardHover, setCardHover] = useState(false);
+  const cards = [
+    { 
+      id: 1, 
+      bgColor: '#FFFFFF', 
+      imageSrc: '/img/gradPhoto.jpg', 
+      altText: 'A Picture of Matthew Herradura',
+      title: 'My Journey' 
+    },
+    { 
+      id: 2, 
+      bgColor: '#7B4EE6', 
+      imageSrc: '/img/luffy.gif', 
+      altText: 'A Gif of Luffy',
+      title: 'Anime' 
+    },
+    { 
+      id: 3, 
+      bgColor: '#464153', 
+      imageSrc: '/img/gradPhoto.jpg', 
+      altText: 'A Picture of Matthew Herradura',
+      title: 'Video Games' 
+    },
+    { 
+      id: 4, 
+      bgColor: '#8474A8', 
+      imageSrc: '/img/gradPhoto.jpg', 
+      altText: 'A Picture of Matthew Herradura',
+      title: 'Sports' 
+    },
+  ]
   useEffect(() => {
     // Set the height of the element
     if (ref.current) {
@@ -17,9 +49,19 @@ export default function About({ onHeightChange }) {
     }
   }, [onHeightChange]);
 
+
+  useEffect(() => {
+    if (cardHover) {
+      console.log("hover");
+    } else {
+      console.log("not hover");
+    }
+  },[cardHover]);
+  
+
   // need to add nav bar outside of main
   return (
-    <div ref={ref} className='flex h-screen w-full flex-col-reverse md:flex-row-reverse md:pt-64'>
+    <div ref={ref} className='flex h-auto sm:h-screen w-full flex-col-reverse md:flex-row-reverse md:pt-64'>
       <div className="w-full border-2 flex-col flex gap-4">
         <div>
           <h3 className="flex font-inter text-[#7B4EE6] text-2xl mb-1">
@@ -52,13 +94,21 @@ export default function About({ onHeightChange }) {
         </div>
         <Journey />
       </div>
-      <div className="w-full border-2 flex items-center justify-center">
-        <div className="w-56 relative border-2 h-96">
-          <div className="w-56 h-96 rounded-lg bg-white absolute z-40"></div>
-          <div className="w-56 h-96 rounded-lg bg-[#7B4EE6] absolute z-30 -rotate-6"></div>
-          <div className="w-56 h-96 rounded-lg bg-[#464153] absolute z-20 rotate-6 -translate-y-2"></div>
-          <div className="w-56 h-96 rounded-lg bg-[#8474A8] absolute z-10 -translate-y-2 -translate-x-2 -rotate-1"></div>
-        </div>
+      <div className="w-full flex items-start justify-center border-2 card-contain sm:h-full">
+        <motion.div 
+          className="about-card"
+          onMouseEnter={() => setCardHover(true)}
+          onMouseLeave={() => setCardHover(false)}
+        >
+          {cards.map((card, index) => (
+            <AboutCard 
+            className="-translate-x/2"
+            content={card} 
+            key={card.id} 
+            index={index} 
+            isHovered={cardHover}/>
+          ))}
+        </motion.div>
       </div>
     </div>
   );

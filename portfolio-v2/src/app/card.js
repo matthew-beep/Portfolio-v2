@@ -34,14 +34,14 @@ export default function Card({content}) {
     imageHover: {
       border: '3px solid rgba(88, 88, 88, 1)',
       transition: {
-        duration: 0.1,
+        duration: 0.3,
         ease: [0.4, 0.0, 0.6, 1]
       }
     }
   }
 
   return (
-    <div className='w-11/12 flex flex-col xl:w-6/12 px-10 items-start justify-center'>
+    <div className='w-11/12 flex flex-col xl:w-6/12 sm:px-10 items-start justify-center'>
       <motion.div 
         className='card flex flex-col p-3 gap-4 rounded-lg cursor-pointer my-5'
         onMouseEnter={() => setIsHovered(true)}

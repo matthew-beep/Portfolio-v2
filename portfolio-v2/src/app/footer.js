@@ -12,10 +12,10 @@ export default function Footer() {
 
   // need to add nav bar outside of main
   return (
-    <footer className='flex flex-col w-full h-auto items-center text-white pt-20 gap-4 border-2'>
+    <footer className='flex flex-col w-full h-auto items-center text-white pt-20 gap-4'>
       <section className='w-9/12 flex'>
         <div className='flex flex-col gap-4'>
-          <div className='font-poppins text-3xl font-bold'>
+          <div className='font-poppins text-3xl font-bold underline decoration-[#7B4EE6] underline-offset-8'>
             Contact Me
           </div>
           <p className='w-8/12 text-xl'>
@@ -89,7 +89,7 @@ export default function Footer() {
       </section>
       <section className='w-9/12 flex items-center justify-center py-10 mt-10'>
         <div>
-          Designed in <span className='font-bold'>Figma</span> and built with <span className='font-bold'>Next.js</span> and Tailwind CSS. Brought to life with <span className='font-bold'>Framer Motion</span>.
+          Designed in <span className='font-bold'>Figma</span> and built with <span className='font-bold'>Next.js</span> and <span className='font-bold'>Tailwind CSS</span>. Brought to life with <span className='font-bold'>Framer Motion</span>.
         </div>
       </section>      
 

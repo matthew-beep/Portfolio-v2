@@ -92,3 +92,17 @@ html {
 input, textarea {
   background-color: rgba(255, 255, 255, 0.10);
 }
+
+.about-img {
+  width: 200%;
+  height: 200%;
+}
+
+.about-card {
+  aspect-ratio: 5/7;
+  width: 20rem;
+}
+
+.card-contain {
+  border: red 3px solid;
+}
