@@ -49,16 +49,6 @@ export default function About({ onHeightChange }) {
     }
   }, [onHeightChange]);
 
-
-  useEffect(() => {
-    if (cardHover) {
-      console.log("hover");
-    } else {
-      console.log("not hover");
-    }
-  },[cardHover]);
-  
-
   // need to add nav bar outside of main
   return (
     <div ref={ref} className='flex h-auto sm:h-screen w-full flex-col-reverse md:flex-row-reverse md:pt-64'>
@@ -94,7 +84,7 @@ export default function About({ onHeightChange }) {
         </div>
         <Journey />
       </div>
-      <div className="w-full flex items-start justify-center border-2 card-contain sm:h-full">
+      <div className="w-full flex items-start justify-center card-contain sm:h-full">
         <motion.div 
           className="about-card"
           onMouseEnter={() => setCardHover(true)}

@@ -10,19 +10,7 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 export default function AboutCard({content, index, isHovered}) {
   let bgColor = '#FFFFFF';
   const [cardHover, setCardHover] = useState(false);
-  console.log("hover: " + isHovered);
   
-
-  /*
-    <div className="w-56 relative border-2 h-96 cursor-pointer border-2">
-      <div className="rounded-lg bg-white absolute z-40 border-2 overflow-hidden about-card">
-        <img src="/img/gradPhoto.jpg" className="w-full h-full object-cover about-img"/>
-      </div>
-      <div className="about-card rounded-lg bg-[#7B4EE6] absolute z-30 -rotate-6"></div>
-      <div className="about-card rounded-lg bg-[#464153] absolute z-20 rotate-6 -translate-y-2"></div>
-      <div className="about-card rounded-lg bg-[#8474A8] absolute z-10 -translate-y-2 -translate-x-2 -rotate-1"></div>
-    </div>
-  */  
   const initialState = {
     cardOne: {
       rotate:0,
@@ -71,10 +59,9 @@ export default function AboutCard({content, index, isHovered}) {
     },
   }
 
-  const variantAnimation = [initialState.cardOneAnimation, initialState.cardTwoAnimation, initialState.cardThreeAnimation, initialState.cardFourAnimation];
-  const variants = [initialState.cardOne, initialState.cardTwo, initialState.cardThree, initialState.cardFour];
-  const selectedVariant = variants[index];
-  const animatedVariant = variantAnimation[index];
+  const titles = Object.keys(initialState)
+  const selectedVariant = titles[index];
+  const animatedVariant = titles[index + 4];
 
 
   return (
@@ -85,8 +72,8 @@ export default function AboutCard({content, index, isHovered}) {
         border: `2px solid ${content.bgColor}`
       }}
       variants={initialState}
-      initial='cardOne'
-      animate='cardOneAnimation'
+      initial={selectedVariant}
+      animate={isHovered ? animatedVariant : selectedVariant}
       transition=
       {{
         duration: 0.3, 
@@ -94,6 +81,14 @@ export default function AboutCard({content, index, isHovered}) {
       }}
       onMouseEnter={() => setCardHover(true)}
       onMouseLeave={() => setCardHover(false)}
+      whileHover=
+      {{
+        translateY: '-10%',
+        transition: {
+          duration: 0.3, // duration of the transition in seconds
+          ease: 'easeInOut', // easing function for the transition
+        },
+      }}
     >
       
       <h3 className='text-black bg-white h-8'>{cardHover + ""}</h3>
