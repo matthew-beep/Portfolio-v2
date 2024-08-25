@@ -10,49 +10,59 @@ export default function About({ onHeightChange }) {
 
   const ref = useRef(null);
   const [cardHover, setCardHover] = useState(false);
-  const cards = [
-    { 
-      id: 1, 
-      bgColor: '#FFFFFF', 
-      imageSrc: '/img/gradPhoto.jpg', 
-      altText: 'A Picture of Matthew Herradura',
-      title: 'My Journey' 
-    },
-    { 
-      id: 2, 
-      bgColor: '#7B4EE6', 
-      imageSrc: '/img/luffy.gif', 
-      altText: 'A Gif of Luffy',
-      title: 'Anime' 
-    },
-    { 
-      id: 3, 
-      bgColor: '#464153', 
-      imageSrc: '/img/gradPhoto.jpg', 
-      altText: 'A Picture of Matthew Herradura',
-      title: 'Video Games' 
-    },
-    { 
-      id: 4, 
-      bgColor: '#8474A8', 
-      imageSrc: '/img/gradPhoto.jpg', 
-      altText: 'A Picture of Matthew Herradura',
-      title: 'Sports' 
-    },
-  ]
+  const [text, setText] = useState('');
+  const [cards, setCards] = useState(
+    [
+      { 
+        id: 1, 
+        bgColor: '#FFFFFF', 
+        imageSrc: '/img/gradPhoto.jpg', 
+        altText: 'A Picture of Matthew Herradura',
+        title: 'My Journey' 
+      },
+      { 
+        id: 2, 
+        bgColor: '#7B4EE6', 
+        imageSrc: '/img/luffy.gif', 
+        altText: 'A Gif of Luffy',
+        title: 'Anime' 
+      },
+      { 
+        id: 3, 
+        bgColor: '#464153', 
+        imageSrc: '/img/ncaa.png', 
+        altText: 'A Picture of Matthew Herradura',
+        title: 'Video Games' 
+      },
+      { 
+        id: 4, 
+        bgColor: '#8474A8', 
+        imageSrc: '/img/allen.gif', 
+        altText: 'A Picture of Matthew Herradura',
+        title: 'Sports' 
+      },
+    ]
+  )
+
+  const handleCardClick = (id) => {
+    // Find the index of the clicked card
+    const cardIndex = cards.findIndex(card => card.id === id);
+    // Remove the clicked card from its current position
+    const [clickedCard] = cards.splice(cardIndex, 1);
+    // Insert the clicked card at the front of the array
+    const newCardsArray = [clickedCard, ...cards];
+    // Update the state with the new array
+    setCards(newCardsArray);
+  };
+
   useEffect(() => {
-    // Set the height of the element
-    if (ref.current) {
-      const rect = ref.current.getBoundingClientRect();
-      onHeightChange(rect.height); // Call the function
-      console.log("about height: " + rect.height);
-    }
-  }, [onHeightChange]);
+    console.log(cards)
+  }, [cards]);
 
   // need to add nav bar outside of main
   return (
     <div ref={ref} className='flex h-auto sm:h-screen w-full flex-col-reverse md:flex-row-reverse md:pt-64'>
-      <div className="w-full border-2 flex-col flex gap-4">
+      <div className="w-full flex-col flex gap-4">
         <div>
           <h3 className="flex font-inter text-[#7B4EE6] text-2xl mb-1">
             <TypeAnimation
@@ -86,18 +96,22 @@ export default function About({ onHeightChange }) {
       </div>
       <div className="w-full flex items-start justify-center card-contain sm:h-full">
         <motion.div 
-          className="about-card"
+          className="w-[34rem] border flex justify-center items-start aspect-[5/5.2]"
           onMouseEnter={() => setCardHover(true)}
           onMouseLeave={() => setCardHover(false)}
         >
-          {cards.map((card, index) => (
-            <AboutCard 
-            className="-translate-x/2"
-            content={card} 
-            key={card.id} 
-            index={index} 
-            isHovered={cardHover}/>
-          ))}
+          <div className="about-card">
+            {cards.map((card, index) => (
+              <AboutCard 
+              className="-translate-x/2"
+              content={card} 
+              key={card.id} 
+              index={index} 
+              isHovered={cardHover}
+              onClick={() => handleCardClick(card.id)}
+              />
+            ))}
+          </div>
         </motion.div>
       </div>
     </div>

@@ -8,7 +8,7 @@ export default function Journey() {
 
   // need to add nav bar outside of main
   return (
-    <div className="text-white flex flex-col gap-4 font-inter text-lg border-2 w-11/12 md:w-10/12">
+    <div className="text-white flex flex-col gap-4 font-inter text-lg w-11/12 md:w-10/12">
       <p>
           Hey, my name is Matthew Herradura. I am a UX Designer and Front End Developer based out of Seattle. 
           I graduated from the <span className="text-[#7B4EE6] font-semiBold">University of Washington</span> (Go dawgs!) and earned a degree in Human Computer Interaction 
