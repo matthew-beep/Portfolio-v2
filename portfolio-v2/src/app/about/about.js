@@ -7,10 +7,12 @@ import { motion } from 'framer-motion';
 import Journey from './journey';
 import AboutCard from './about-card';
 export default function About({ onHeightChange }) {
-
   const ref = useRef(null);
+  const [displayed, setDisplay] = useState(); // set text based on first card
   const [cardHover, setCardHover] = useState(false);
   const [text, setText] = useState('');
+  const [revert, setRevert] = useState(false);
+  const [hoverDisabled, setHoverDisabled] = useState(false);
   const [cards, setCards] = useState(
     [
       { 
@@ -46,6 +48,9 @@ export default function About({ onHeightChange }) {
 
   const handleCardClick = (id) => {
     // Find the index of the clicked card
+    console.log("card clicked");
+    setHoverDisabled(true);
+    setRevert(true); 
     const cardIndex = cards.findIndex(card => card.id === id);
     // Remove the clicked card from its current position
     const [clickedCard] = cards.splice(cardIndex, 1);
@@ -53,6 +58,13 @@ export default function About({ onHeightChange }) {
     const newCardsArray = [clickedCard, ...cards];
     // Update the state with the new array
     setCards(newCardsArray);
+    setTimeout(() => {
+      setRevert(false);
+      //setCardHover(false); // Turn off the revert state
+    }, 100);
+    setTimeout(() => {
+      setHoverDisabled(false);
+    }, 1000)
   };
 
   useEffect(() => {
@@ -100,15 +112,16 @@ export default function About({ onHeightChange }) {
           onMouseEnter={() => setCardHover(true)}
           onMouseLeave={() => setCardHover(false)}
         >
-          <div className="about-card">
+          <div className="sm:w-[20rem] w-[15rem]">
             {cards.map((card, index) => (
               <AboutCard 
               className="-translate-x/2"
               content={card} 
               key={card.id} 
               index={index} 
-              isHovered={cardHover}
+              isHovered={cardHover && !hoverDisabled }
               onClick={() => handleCardClick(card.id)}
+              revert={revert}
               />
             ))}
           </div>

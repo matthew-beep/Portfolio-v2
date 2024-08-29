@@ -15,12 +15,11 @@ export default function Portfolio({ onHeightChange }) {
   const fullBlur = '30px';
   const fullOpaque = '50%';
   // const hash = window.location.hash;
-  const [blurVal, setBlurVal] = useState(0);
   const [modalOpacity, setModalOpacity] = useState();
   const { scrollY } = useScroll()
   const blur = useTransform(scrollY, [200, 1000], ['0px', fullBlur]);
   const modal = useTransform(scrollY, [200, 1000], ['0%', fullOpaque]);
-  
+  const [blurVal, setBlurVal] = useState(blur.get());
   const ref = useRef(null);
   useEffect(() => {
     // Set the height of the element
@@ -274,8 +273,11 @@ export default function Portfolio({ onHeightChange }) {
                   <div className='flex flex-col w-full h-full glassmorphic relative z-30 rounded-lg py-4'>
                     <h3 className='text-white text-2xl font-poppins font-semibold pl-3 mb-2'>My Skills</h3>
                     <div className='flex flex-wrap h-full w-full items-center px-3 gap-4'>
-                      {skills.map(skill => (
-                        <Pill skills={skill}/>
+                      {skills.map((skill, index) => (
+                        <Pill 
+                        skills={skill}
+                        key={index}
+                        />
                       ))}        
                     </div>
                   </div>

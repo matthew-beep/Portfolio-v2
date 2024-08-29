@@ -7,9 +7,9 @@ import { motion, useScroll, useMotionValueEvent, useTransform, easeInOut, useAni
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
-export default function AboutCard({content, index, isHovered, onClick}) {
+export default function AboutCard({content, index, isHovered, onClick, revert}) {
   const controls = useAnimation();
-  const [yTranslate, setYTranslate] = useState(0)
+  const [firstCard, setFirstCard] = useState(index == 0);
   const initialState = {
     cards: [
       { rotate: 0, translateX: 0, translateY: 0, zIndex: 40 }, // cardOne
@@ -24,13 +24,13 @@ export default function AboutCard({content, index, isHovered, onClick}) {
       { rotate: -24, translateY: 32, translateX: -150 } // cardFourAnimation
     ]
   };
-
+  
   // const titles = Object.keys(initialState)
   const selectedVariant = initialState.cards[index];
   const animatedVariant = initialState.animations[index];
 
   useEffect(() => {
-    console.log(isHovered);
+    console.log("card : " + index + " " + isHovered);
     if (isHovered) {
       controls.start(animatedVariant)
     } else {
@@ -38,11 +38,31 @@ export default function AboutCard({content, index, isHovered, onClick}) {
     }
   }, [isHovered]);
 
-  
+  useEffect(() => {
+    if (revert) {
+      controls.start(selectedVariant);
+    }
+  }, [revert]);
+
+  /*
+        <motion.div className='w-full'
+        style={{
+          height: firstCard ? '0%' : '100%',
+          backgroundColor: content.bgColor
+        }}
+        whileHover={{
+          height: '0%',
+          transition: { 
+            duration: 0.3,
+            ease: [0.42, 0, 0.58, 1] 
+          },
+        }}
+      >
+  */
 
   return (
     <motion.div 
-      className='rounded-lg absolute overflow-hidden about-card cursor-pointer'
+      className='rounded-lg absolute overflow-hidden aspect-[5/7] sm:w-[20rem] w-[15rem] cursor-pointer'
       style={{
         border: `3px solid ${content.bgColor}`,
         background: `linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 30%), url(${content.imageSrc}) no-repeat center center`,
@@ -50,7 +70,7 @@ export default function AboutCard({content, index, isHovered, onClick}) {
       }}
       animate={controls}
       whileHover={{
-        boxShadow:'0 0 10px rgba(255, 255, 255, 0.5), 0 0 15px rgba(255, 255, 255, 0.3), 0 0 20px rgba(255, 255, 255, 0.2)'
+        boxShadow:'0 0 10px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 0, 0, 0.2)'
       }}
       transition=
       {{
@@ -58,23 +78,28 @@ export default function AboutCard({content, index, isHovered, onClick}) {
         ease: 'easeInOut'
       }}
       onMouseEnter={() => {
-        setYTranslate(selectedVariant.translateY);
-        controls.start({
-          translateY: animatedVariant.translateY - 50,
-          transition: { duration: 0.3 },
-        });
+        if (isHovered) {
+          controls.start({
+            translateY: animatedVariant.translateY - 50,
+            transition: { duration: 0.3 },
+          });
+        }
       }}
       onMouseLeave={() => {
-        controls.start({
-          translateY: animatedVariant.translateY,
-          transition: { duration: 0.3 },
-        });
+        if (isHovered) {
+          controls.start({
+            translateY: animatedVariant.translateY,
+            transition: { duration: 0.3 },
+          });
+        }
       }}
-      onClick={onClick}
+      onClick={(e) => {
+        onClick(e);
+        // Revert back to the initial state
+      }}
     >
-      
-      <h3 className='text-white font-poppins text-2xl p-3'>{content.title}</h3>
-      
+      <h3 className='text-white font-poppins text-2xl p-3 absolute'>{content.title}</h3>
+
       
     </motion.div>
   );
