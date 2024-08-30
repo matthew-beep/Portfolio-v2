@@ -13,15 +13,15 @@ export default function Footer() {
   // need to add nav bar outside of main
   return (
     <footer className='flex flex-col w-full h-auto items-center text-white pt-20 gap-4'>
-      <section className='w-9/12 flex'>
+      <section className='w-9/12 flex flex-col sm:flex-row'>
         <div className='flex flex-col gap-4'>
           <div className='font-poppins text-3xl font-bold underline decoration-[#7B4EE6] underline-offset-8'>
             Contact Me
           </div>
-          <p className='w-8/12 text-xl'>
+          <p className='sm:w-8/12 text-xl w-10/12'>
             Feel free to contact me if you want to connect, collaborate with me, or have any questions about my work.
           </p>
-          <p className='w-8/12 text-xl'>
+          <p className='sm:w-8/12 text-xl'>
             You can also directly email me at matthew.herradura@gmail.com. Leave me a message and I will get back to you as soon as I can!
           </p>
         </div>
@@ -87,9 +87,15 @@ export default function Footer() {
           </motion.div>
         </div>
       </section>
-      <section className='w-9/12 flex items-center justify-center py-10 mt-10'>
+      <section className='w-9/12 flex items-center justify-center py-10 mt-10 flex-col'>
         <div>
-          Designed in <span className='font-bold'>Figma</span> and built with <span className='font-bold'>Next.js</span> and <span className='font-bold'>Tailwind CSS</span>. Brought to life with <span className='font-bold'>Framer Motion</span>.
+          Designed in <span className='font-bold text-[#7B4EE6]'>Figma</span> and built with 
+          <span className='font-bold text-[#7B4EE6]'> Next.js</span> and 
+          <span className='font-bold text-[#7B4EE6]'> Tailwind CSS</span>. Brought to life with 
+          <span className='font-bold text-[#7B4EE6]'> Framer Motion</span>.
+        </div>
+        <div>
+          All by Matthew Herradura
         </div>
       </section>      
 
