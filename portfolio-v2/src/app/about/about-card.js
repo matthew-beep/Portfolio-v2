@@ -62,7 +62,7 @@ export default function AboutCard({content, index, isHovered, onClick, revert}) 
 
   return (
     <motion.div 
-      className='rounded-lg absolute overflow-hidden aspect-[5/7] sm:w-[17rem] md:w-[20] w-[15rem] cursor-pointer'
+      className='rounded-lg absolute overflow-hidden aspect-[5/7] sm:w-[17rem] md:w-[20rem] w-[15rem] cursor-pointer'
       style={{
         border: `3px solid ${content.bgColor}`,
         background: `linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 30%), url(${content.imageSrc}) no-repeat center center`,

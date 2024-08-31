@@ -5,7 +5,7 @@ import github from '../../public/img/github.svg';
 import linkedin from '../../public/img/linkedin.svg';
 import { useState, useEffect } from "react";
 import Link from 'next/link';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, useAnimation } from 'framer-motion';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 
 
@@ -13,16 +13,19 @@ export default function NavBar({ home, height }) {
 
   const [showNav, hideNav] = useState(true);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [hovered, setHovered] = useState('/');
+  const pathname = usePathname();
+  const controls = useAnimation();
+
+
 
   const handleScroll = () => {
     const currentScrollPos = window.scrollY
-
     if(currentScrollPos > prevScrollPos && currentScrollPos > (height + 40)){
         hideNav(false);
     } else {
         hideNav(true);
     }
-
     setPrevScrollPos(currentScrollPos);
   }
 
@@ -67,12 +70,48 @@ export default function NavBar({ home, height }) {
                   </Link>
                 </div>
                 <ul className="flex justify-center items-center space-x-4 font-inter font-semiBold text-lg">
-                  <li>
-                    <Link href={home} className="text-white">Home</Link>
-                  </li>
-                  <li>
-                    <Link href="/about" className="text-white">About Me</Link>
-                  </li>
+                <motion.li
+                  className="flex flex-col relative"
+                  whileHover="hover"
+                >
+                  <Link href={home} className="text-white">Home</Link>
+                  <motion.div
+                    style={{
+                      width: '100%',
+                      height: '0.125rem',
+                      position: 'absolute',
+                      backgroundColor: '#7B4EE6',
+                      bottom: 0,
+                    }}
+                    initial={{ scaleX: pathname === '/' ? 1 : 0 }}  // Initially show the line for the active link
+                    variants={{
+                      hover: { scaleX: 1 },  // Scale on hover
+                    }}
+                    transition={{ duration: 0.3 }}
+                  >
+                  </motion.div>
+                </motion.li>
+                <motion.li
+                  className="flex flex-col relative"
+                  whileHover="hover"
+                >
+                  <Link href="/about" className="text-white">About Me</Link>
+                  <motion.div
+                    style={{
+                      width: '100%',
+                      height: '0.125rem',
+                      position: 'absolute',
+                      backgroundColor: '#7B4EE6',
+                      bottom: 0,
+                    }}
+                    initial={{ scaleX: pathname === '/about' ? 1 : 0 }}  // Initially show the line for the active link
+                    variants={{
+                      hover: { scaleX: 1 },  // Scale on hover
+                    }}
+                    transition={{ duration: 0.3 }}
+                  >
+                  </motion.div>
+                </motion.li>
                 </ul>
               </motion.div>
             </nav>

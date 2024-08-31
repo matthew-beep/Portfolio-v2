@@ -45,7 +45,7 @@ export default function Portfolio({ onHeightChange }) {
     };
 
     // Trigger the initial scroll check
-    console.log(window.scrollY);
+    //console.log(window.scrollY);
     if(window.scrollY > 0 ) {
       console.log('load blur');
       handleInitialScroll();
@@ -74,43 +74,29 @@ export default function Portfolio({ onHeightChange }) {
       description: 'The first ever public facing Distributed Acoustic Sensing research tool. Built in collaboration with UW\'s Earth and Space Science Department and recognized as a Research Award Finalist at the iSchool Capstone Gala.',
       image: '/img/vizdas.png',
       link: 'https://github.com/matthew-beep/project1',
-      skills: ['React', 'Figma', 'UX Research', 'Wireframing', 'Information Architecture']
+      skills: ['React', 'Figma', 'UX Research', 'Wireframing']
     },
     {
       name: 'IMDb Redesign',
       description: 'An analysis of the Internet Movie Database\'s information architecture. Includes a collection of recommendations for improvement on IMDb\'s hierarchy of information related to labels, search, navigation, site mapping, etc.',
       image: '/img/imdb_svg.svg',
       link: 'https://github.com/matthew-beep/',
-      skills: ['React', 'Figma', 'UX Research', 'Wireframing', 'Information Architecture']
+      skills: ['UX Research', 'UX Design']
     },
     {
-      name: 'VizDAS',
-      description: ' in collaboration with UW\'s Earth and Space Science Department and recognized as a Research Award Finalist at the iSchool Capstone Gala.',
-      image: '/img/vizdas.png',
+      name: 'Blossom',
+      description: 'Blossom is a mobile application designed to help encourage young women pursue careers in male dominated STEM fields. A more detailed description of our research, design process, and final prototype can be found in the case study below.',
+      image: '/img/blossom.jpg',
       link: 'https://github.com/matthew-beep/project1',
-      skills: ['React', 'Figma', 'UX Research', 'Wireframing', 'Information Architecture']
+      skills: ['User Testing', 'Personas', 'UX Research', 'Wireframing']
     },
     {
       name: 'IMDb Redesign',
       description: 'An analysis of the Internet Movie Database\'s information architecture. Includes a collection of recommendations for improvement on IMDb\'s hierarchy of information related to labels, search, navigation, site mapping, etc.',
       image: '/img/imdb_svg.svg',
       link: 'https://github.com/matthew-beep/',
-      skills: ['React', 'Figma', 'UX Research', 'Wireframing', 'Information Architecture']
+      skills: ['React', 'Figma', 'UX Research', 'Wireframing']
     },
-    {
-      name: 'VizDAS',
-      description: ' in collaboration with UW\'s Earth and Space Science Department and recognized as a Research Award Finalist at the iSchool Capstone Gala.',
-      image: '/img/vizdas.png',
-      link: 'https://github.com/matthew-beep/project1',
-      skills: ['React', 'Figma', 'UX Research', 'Wireframing', 'Information Architecture']
-    },
-    {
-      name: 'IMDb Redesign',
-      description: 'An analysis of the Internet Movie Database\'s information architecture. Includes a collection of recommendations for improvement on IMDb\'s hierarchy of information related to labels, search, navigation, site mapping, etc.',
-      image: '/img/imdb_svg.svg',
-      link: 'https://github.com/matthew-beep/',
-      skills: ['React', 'Figma', 'UX Research', 'Wireframing', 'Information Architecture']
-    }
   ];
 
   const skills = ['HTML', 'CSS', 'JavaScipt', 'React', 'Tailwind', 'Figma', 'Illustrator', 'UX Research', 'Wireframing', 'Information Architecture'];

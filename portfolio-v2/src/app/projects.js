@@ -4,6 +4,7 @@ import './fonts.css';
 import { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useMotionValueEvent, useTransform, useInView, inView, useAnimation } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
+
 import Card from './card';
 import Pill from './pill';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -49,10 +50,15 @@ export default function Projects({ work }) {
           }}
           onViewportEnter={() => startType(true)}
         >
-          <div className='w-16 h-16 rounded-full absolute bg-[#161B22] top-0 left-1/2 -translate-y-1/2 -translate-x-1/2 flex border-t-1'>
-            <div className='w-full h-full flex items-center justify-center '>
+          <div className='w-16 h-16 rounded-full absolute bg-[#161B22] top-0 left-1/2 -translate-y-1/2 -translate-x-1/2 flex overflow-hidden'>
+            <Link 
+              className='w-full h-full flex flex-col items-center justify-center hover:bg-white rounded-full cursor-pointer relative'
+              href='#home'
+            >
+              <div className="absolute inset-0 project-section-border rounded-t-full" />
+              <FontAwesomeIcon className="text-3xl rotate-180" icon={faChevronDown}/>
               Top
-            </div>
+            </Link>
           </div>
           <h3 className="flex font-inter text-[#7B4EE6] text-2xl mb-1 px-10">
             {type && <TypeAnimation

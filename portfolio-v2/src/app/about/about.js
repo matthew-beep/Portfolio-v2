@@ -98,7 +98,7 @@ export default function About({ onHeightChange }) {
 
   // need to add nav bar outside of main
   return (
-    <div ref={ref} className='flex h-auto sm:min-h-screen w-full flex-col-reverse lg:flex-row-reverse px-10 pb-10 pt-10 lg:px-0 lg:pb-0 md:pt-64'>
+    <div ref={ref} className='flex h-auto sm:min-h-screen w-full flex-col-reverse lg:flex-row-reverse px-10 pb-10 pt-10 lg:px-0 lg:pb-0 md:pt-64 gap-20 lg:gap-0'>
       <div className="w-full flex-col flex gap-4">
         <div>
           <h3 className="flex font-inter text-[#7B4EE6] text-2xl mb-1">
@@ -136,7 +136,7 @@ export default function About({ onHeightChange }) {
           {displayed}
         </motion.div>
       </div>
-      <div className="w-full flex items-center justify-center card-contain sm:h-full border-2">
+      <div className="w-full flex items-center justify-center card-contain sm:h-full">
         <div 
           className="rounded-sm bg-[#3E484C] p-1 hover:bg-[#7B4EE6] duration-200 transition-all cursor-pointer lg:hidden"
           onClick={() => {
@@ -150,7 +150,7 @@ export default function About({ onHeightChange }) {
           <FontAwesomeIcon icon={faChevronDown} className='text-2xl rotate-90 text-white'/>
         </div>
         <motion.div 
-          className="w-[34rem] border flex justify-center items-start aspect-[5/5.2]"
+          className="w-[34rem] flex justify-center items-start aspect-[5/5.2]"
           onMouseEnter={() => setCardHover(true)}
           onMouseLeave={() => setCardHover(false)}
           initial={{ opacity: 0 }}
@@ -160,7 +160,7 @@ export default function About({ onHeightChange }) {
             ease: 'easeInOut',
           }}
         >
-          <div className="sm:w-[17rem] md:w-[20] w-[15rem]">
+          <div className="sm:w-[17rem] md:w-[20rem] w-[15rem]">
             {cards.map((card, index) => (
               <AboutCard 
               className="-translate-x/2"
@@ -177,8 +177,8 @@ export default function About({ onHeightChange }) {
         <div 
           className="rounded-sm bg-[#3E484C] p-1 hover:bg-[#7B4EE6] duration-200 transition-all cursor-pointer lg:hidden"
           onClick={() => {
-              if(cards[0].id == cards.length){ 
-                handleCardClick(cards[cards.length - 1].id);
+              if(cards[0].id == cards.length) { 
+                handleCardClick(1);
               } else {
                 handleCardClick(cards[0].id + 1);
               }

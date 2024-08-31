@@ -41,7 +41,7 @@ export default function Card({content}) {
   }
 
   return (
-    <div className='w-11/12 flex flex-col xl:w-6/12 sm:px-10 items-start justify-center'>
+    <div className='w-11/12 flex flex-col xl:w-6/12 sm:px-10 items-start justify-center border-2'>
       <motion.div 
         className='card flex flex-col p-3 gap-4 rounded-lg cursor-pointer my-5'
         onMouseEnter={() => setIsHovered(true)}
