@@ -6,6 +6,8 @@ import linkedin from '../../public/img/linkedin.svg';
 import { useState, useEffect } from "react";
 import Link from 'next/link';
 import { AnimatePresence, motion, useAnimation } from 'framer-motion';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome } from '@fortawesome/free-solid-svg-icons';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 
 
@@ -53,7 +55,7 @@ export default function NavBar({ home, height }) {
           transition={{ duration: 0.5, ease: 'easeOut' }}
           className='m-auto'
           >
-            <nav className="hidden sm:flex glassmorphic w-full h-20 py-3 pl-3 pr-10 rounded-full justify-between items-center">
+            <nav className="hidden md:flex glassmorphic w-full h-20 py-3 pl-3 pr-10 rounded-full justify-between items-center">
               <motion.div 
                 className='w-full h-full rounded-full flex justify-between items-center'
                 initial={{ 

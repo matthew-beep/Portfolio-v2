@@ -7,6 +7,7 @@ import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { motion, useScroll, useTransform, useSpring, useAnimate} from 'framer-motion';
 import Portfolio from './portfolio';
 import NavBar from './header';
+import MobileNav from './mobileNav';
 import Link from 'next/link';
 import Footer from './footer';
 export default function Home() {
@@ -17,7 +18,7 @@ export default function Home() {
   const [translate, setTranslate] = useState('-100px');
   const [initialScroll, setInitialScroll] = useState(true);
   const [pageHeight, setPageHeight] = useState(0);
-
+  const [width, setWidth] = useState(window.innerWidth);
   const ref = useRef(null);
 
   const [scope, animate] = useAnimate();
@@ -104,11 +105,29 @@ export default function Home() {
       }
     }, [scrolling]);
 
+    useEffect(() => {
+      const handleResize = () => {
+        setWidth(window.innerWidth);
+      };
+  
+      // Add event listener
+      window.addEventListener('resize', handleResize);
+  
+      // Initial log
+      console.log(`Current width: ${window.innerWidth}`);
+  
+      // Cleanup the event listener on component unmount
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }, [width]);
+
   return (
     
     <div className='bg-[#161B22] relative'>
       
-      <NavBar home={'#home'} height={pageHeight}/>
+      <NavBar home={'#home'} height={pageHeight} width={width} className="hidden md:block"/>
+      <MobileNav home={'#home'} height={pageHeight} width={width} className='z-50 absolute md:hidden top-0 left-0 '/>
       <motion.div 
         className='hidden md:block glassmorphic py-1 px-1 rounded-l-lg right-0 fixed z-50 right-0 top-1/2'
         ref={scope}
@@ -133,7 +152,7 @@ export default function Home() {
           </li>
         </ul>
       </motion.div>
-      <main id='home'className='z-10'>
+      <main id='home'className='relative z-10'>
         <Portfolio onHeightChange={setPageHeight}/>
       </main>
       <Footer />

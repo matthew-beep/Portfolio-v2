@@ -73,33 +73,37 @@ export default function Portfolio({ onHeightChange }) {
       name: 'VizDAS',
       description: 'The first ever public facing Distributed Acoustic Sensing research tool. Built in collaboration with UW\'s Earth and Space Science Department and recognized as a Research Award Finalist at the iSchool Capstone Gala.',
       image: '/img/vizdas.png',
-      link: 'https://github.com/matthew-beep/project1',
-      skills: ['React', 'Figma', 'UX Research', 'Wireframing']
+      alt: 'A photo of the ViZDAS project',
+      link: 'https://dasway.ess.washington.edu/vizdas/',
+      skills: ['React', 'Figma', 'UX Research', 'Wireframing'],
     },
     {
       name: 'IMDb Redesign',
       description: 'An analysis of the Internet Movie Database\'s information architecture. Includes a collection of recommendations for improvement on IMDb\'s hierarchy of information related to labels, search, navigation, site mapping, etc.',
       image: '/img/imdb_svg.svg',
-      link: 'https://github.com/matthew-beep/',
+      alt: 'The imdB logo',
+      link: '/files/imdbPres.pdf',
       skills: ['UX Research', 'UX Design']
     },
     {
       name: 'Blossom',
       description: 'Blossom is a mobile application designed to help encourage young women pursue careers in male dominated STEM fields. A more detailed description of our research, design process, and final prototype can be found in the case study below.',
       image: '/img/blossom.jpg',
-      link: 'https://github.com/matthew-beep/project1',
+      alt: 'A photo of the Blossom project prototype',
+      link: '/files/blossom.pdf',
       skills: ['User Testing', 'Personas', 'UX Research', 'Wireframing']
     },
     {
       name: 'IMDb Redesign',
       description: 'An analysis of the Internet Movie Database\'s information architecture. Includes a collection of recommendations for improvement on IMDb\'s hierarchy of information related to labels, search, navigation, site mapping, etc.',
       image: '/img/imdb_svg.svg',
+      alt: 'A photo of imdB',
       link: 'https://github.com/matthew-beep/',
       skills: ['React', 'Figma', 'UX Research', 'Wireframing']
     },
   ];
 
-  const skills = ['HTML', 'CSS', 'JavaScipt', 'React', 'Tailwind', 'Figma', 'Illustrator', 'UX Research', 'Wireframing', 'Information Architecture'];
+  const skills = ['HTML', 'CSS', 'JavaScipt', 'React', 'Tailwind', 'NextJS', 'Git','Figma', 'Adobe Illustrator', 'UX Research', 'Wireframing', 'Information Architecture'];
 ;  /*
   const background = (blurVal) => ({
     filter: `blur(${blur.get()})`,
@@ -109,7 +113,7 @@ export default function Portfolio({ onHeightChange }) {
   */
 
   return (
-    <div className='relative flex flex-col'>
+    <div className='relative flex flex-col border-2'>
       <section ref={ref} id="home" className="h-screen w-full flex justify-center items-start sticky top-0 z-10 relative overflow-x-clip">
         <motion.div 
           className='z-50 absolute w-screen h-screen'
@@ -122,7 +126,7 @@ export default function Portfolio({ onHeightChange }) {
         </motion.div>
           <div className="w-full h-full flex justify-center items-center img-container md:bg-grid bg-no-repeat bg-center">
             <motion.div 
-              className="h-full w-11/12 md:w-9/12 flex flex-col justify-between pt-32 md:pt-64 pb-10"
+              className="h-full w-11/12 md:w-9/12 flex flex-col justify-between pt-32 lg:pt-64 pb-10 border-2"
               initial={{
                 x: -200,
                 opacity: 0,
@@ -132,7 +136,7 @@ export default function Portfolio({ onHeightChange }) {
                 opacity: 1
               }}
             >
-              <div className='flex flex-col'>
+              <div className='flex flex-col lg:h-auto h-3/4'>
                 <motion.div 
                   className="flex flex-col h-auto justify-between"
                   initial={{ filter: 'blur(10px)' }}
@@ -164,10 +168,10 @@ export default function Portfolio({ onHeightChange }) {
                       |
                     </motion.div>
                   </h3>
-                  <h1 className="font-poppins text-white text-5xl mb-3">Hey, I'm <span className="underline">Matt</span> 👋</h1>
+                  <h1 className="font-poppins text-white text-4xl lg:text-5xl mb-3">Hey, I'm <span className="underline">Matt</span> 👋</h1>
                   <p className="text-white font-inter text-lg">I like to <span className="font-inter font-bold text-[#7B4EE6]">design</span> and <span className="font-inter font-bold text-[#7B4EE6]">develop</span> user interfaces.</p>
                 </motion.div>
-                <div className="md:w-6/12 w-full min-h-52 h-auto rounded-lg mt-9 relative mt-10">
+                <div className="xl:w-6/12 w-full h-full rounded-lg relative mt-16 lg:mt-10">
                   <motion.div 
                     className="absolute bg-white rounded-full bottom-0 left-0 -translate-x-1/2 translate-y-1/2 gradient-circle z-0"
                     initial={{
@@ -218,7 +222,6 @@ export default function Portfolio({ onHeightChange }) {
                         bounce: 0.6
                       }}                      
                     >
-
                     </motion.div>
                   </motion.div>
                   <motion.div 
@@ -256,9 +259,9 @@ export default function Portfolio({ onHeightChange }) {
                     >
                     </motion.div>
                   </motion.div>
-                  <div className='flex flex-col w-full h-full glassmorphic relative z-30 rounded-lg py-4'>
-                    <h3 className='text-white text-2xl font-poppins font-semibold pl-3 mb-2'>My Skills</h3>
-                    <div className='flex flex-wrap h-full w-full items-center px-3 gap-4'>
+                  <div className='flex flex-col w-full h-full glassmorphic relative z-30 rounded-lg p-4'>
+                    <h3 className='text-white text-2xl font-poppins font-semibold pl-3 mb-4'>My Skills</h3>
+                    <div className='flex flex-wrap h-full w-full items-center px-3 gap-2 sm:gap-4'>
                       {skills.map((skill, index) => (
                         <Pill 
                         skills={skill}
@@ -290,7 +293,6 @@ export default function Portfolio({ onHeightChange }) {
                     type: 'continuous',
                     direction: 'alternate',
                   }}
-
                   whileHover={{y: 0}}
                   className='mb-3 font-bold' 
                 > 
@@ -299,11 +301,10 @@ export default function Portfolio({ onHeightChange }) {
                 <FontAwesomeIcon icon={faChevronDown} className='text-xl'/>
               </motion.div>
             </motion.div>
-            <div className="hidden md:block absolute w-72 h-72 mb-1 bg-white rounded-full bottom-0 right-0 translate-x-1/2 translate-y-1 gradient-circle z-0"></div>
+            <div className="hidden xl:block absolute w-72 h-72 mb-1 bg-white rounded-full bottom-0 right-0 translate-x-1/2 translate-y-1 gradient-circle z-0"></div>
           </div>
       </section>
       <Projects work={projects}/>
-
     </div>
   );
 }

@@ -12,9 +12,11 @@ import Sports from './sports';
 import Games from './games';
 import AboutCard from './about-card';
 export default function About({ onHeightChange }) {
+  const hoverWidth = 1024;
   const ref = useRef(null);
   const [displayed, setDisplay] = useState(<Journey/>); // set text based on first card
   const [cardHover, setCardHover] = useState(false);
+  const [width, setWidth] = useState(window.innerWidth);
   const [text, setText] = useState('');
   const [revert, setRevert] = useState(false);
   const [hoverDisabled, setHoverDisabled] = useState(false);
@@ -96,10 +98,26 @@ export default function About({ onHeightChange }) {
     });
   }, [cards])
 
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+
+    // Add event listener
+    window.addEventListener('resize', handleResize);
+
+    // Initial log
+    console.log(`Current width: ${window.innerWidth}`);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [width]);
   // need to add nav bar outside of main
   return (
-    <div ref={ref} className='flex h-auto sm:min-h-screen w-full flex-col-reverse lg:flex-row-reverse px-10 pb-10 pt-10 lg:px-0 lg:pb-0 md:pt-64 gap-20 lg:gap-0'>
-      <div className="w-full flex-col flex gap-4">
+    <div ref={ref} className='flex border-2 h-auto sm:min-h-screen w-9/12 m-auto lg:m-0 lg:w-full flex-col-reverse lg:flex-row-reverse px-10 pb-10 pt-10 px-0 lg:pb-0 md:pt-64 gap-20 lg:gap-0'>
+      <div className="w-full flex-col flex gap-4 w-9/12 border-2">
         <div>
           <h3 className="flex font-inter text-[#7B4EE6] text-2xl mb-1">
             <TypeAnimation
@@ -136,9 +154,9 @@ export default function About({ onHeightChange }) {
           {displayed}
         </motion.div>
       </div>
-      <div className="w-full flex items-center justify-center card-contain sm:h-full">
+      <div className="w-full flex items-center md:items-start justify-center gap-10 mt-36 sm:mt-0">
         <div 
-          className="rounded-sm bg-[#3E484C] p-1 hover:bg-[#7B4EE6] duration-200 transition-all cursor-pointer lg:hidden"
+          className="rounded-sm bg-[#3E484C] p-1 hover:bg-[#7B4EE6] duration-200 transition-all lg:cursor-pointer lg:hidden flex items-center justify-center"
           onClick={() => {
             if(cards[0].id == 1){ 
               handleCardClick(cards[cards.length - 1].id);
@@ -150,9 +168,17 @@ export default function About({ onHeightChange }) {
           <FontAwesomeIcon icon={faChevronDown} className='text-2xl rotate-90 text-white'/>
         </div>
         <motion.div 
-          className="w-[34rem] flex justify-center items-start aspect-[5/5.2]"
-          onMouseEnter={() => setCardHover(true)}
-          onMouseLeave={() => setCardHover(false)}
+          className="border-2 w-auto lg:w-[34rem] flex justify-center items-start aspect-[5/7] w-[15rem] lg:aspect-[5/5.2]"
+          onMouseEnter={() => {
+            if(width >= hoverWidth) {
+              setCardHover(true);
+            }
+          }}
+          onMouseLeave={() => {
+            if(width >= hoverWidth) {
+              setCardHover(false);
+            }
+          }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{
@@ -160,7 +186,7 @@ export default function About({ onHeightChange }) {
             ease: 'easeInOut',
           }}
         >
-          <div className="sm:w-[17rem] md:w-[20rem] w-[15rem]">
+          <div className="sm:w-[17rem] md:w-[20rem] w-[15rem] h-auto">
             {cards.map((card, index) => (
               <AboutCard 
               className="-translate-x/2"
@@ -175,7 +201,7 @@ export default function About({ onHeightChange }) {
           </div>
         </motion.div>
         <div 
-          className="rounded-sm bg-[#3E484C] p-1 hover:bg-[#7B4EE6] duration-200 transition-all cursor-pointer lg:hidden"
+          className="rounded-sm bg-[#3E484C] p-1 hover:bg-[#7B4EE6] duration-200 transition-all cursor-pointer lg:hidden flex items-center justify-center"
           onClick={() => {
               if(cards[0].id == cards.length) { 
                 handleCardClick(1);
