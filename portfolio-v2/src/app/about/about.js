@@ -116,8 +116,8 @@ export default function About({ onHeightChange }) {
   }, [width]);
   // need to add nav bar outside of main
   return (
-    <div ref={ref} className='flex border-2 h-auto sm:min-h-screen w-9/12 m-auto lg:m-0 lg:w-full flex-col-reverse lg:flex-row-reverse px-10 pb-10 pt-10 px-0 lg:pb-0 md:pt-64 gap-20 lg:gap-0'>
-      <div className="w-full flex-col flex gap-4 w-9/12 border-2">
+    <div ref={ref} className='flex h-auto sm:min-h-screen w-9/12 m-auto lg:m-0 lg:w-full flex-col-reverse lg:flex-row-reverse pb-10 pt-10 lg:pb-0 md:pt-64 gap-20 lg:gap-0'>
+      <div className="w-full flex-col flex gap-4 w-9/12">
         <div>
           <h3 className="flex font-inter text-[#7B4EE6] text-2xl mb-1">
             <TypeAnimation
@@ -156,7 +156,7 @@ export default function About({ onHeightChange }) {
       </div>
       <div className="w-full flex items-center md:items-start justify-center gap-10 mt-36 sm:mt-0">
         <div 
-          className="rounded-sm bg-[#3E484C] p-1 hover:bg-[#7B4EE6] duration-200 transition-all lg:cursor-pointer lg:hidden flex items-center justify-center"
+          className="rounded-md bg-[#3E484C] p-1 hover:bg-[#7B4EE6] duration-200 transition-all cursor-pointer lg:hidden flex items-center justify-center h-12 w-48"
           onClick={() => {
             if(cards[0].id == 1){ 
               handleCardClick(cards[cards.length - 1].id);
@@ -165,10 +165,10 @@ export default function About({ onHeightChange }) {
             }
           }}
         >
-          <FontAwesomeIcon icon={faChevronDown} className='text-2xl rotate-90 text-white'/>
+          <FontAwesomeIcon icon={faChevronDown} className='text-3xl rotate-90 text-white'/>
         </div>
         <motion.div 
-          className="border-2 w-auto lg:w-[34rem] flex justify-center items-start aspect-[5/7] w-[15rem] lg:aspect-[5/5.2]"
+          className="w-auto lg:w-[34rem] flex justify-center items-start aspect-[5/7] w-[15rem] lg:aspect-[5/5.2]"
           onMouseEnter={() => {
             if(width >= hoverWidth) {
               setCardHover(true);
@@ -201,7 +201,7 @@ export default function About({ onHeightChange }) {
           </div>
         </motion.div>
         <div 
-          className="rounded-sm bg-[#3E484C] p-1 hover:bg-[#7B4EE6] duration-200 transition-all cursor-pointer lg:hidden flex items-center justify-center"
+          className="rounded-md bg-[#3E484C] p-1 hover:bg-[#7B4EE6] duration-200 transition-all cursor-pointer lg:hidden flex items-center justify-center h-12 w-48"
           onClick={() => {
               if(cards[0].id == cards.length) { 
                 handleCardClick(1);
@@ -210,7 +210,7 @@ export default function About({ onHeightChange }) {
               }
           }}
           >
-          <FontAwesomeIcon icon={faChevronDown} className='text-2xl -rotate-90 text-white'/>
+          <FontAwesomeIcon icon={faChevronDown} className='text-3xl -rotate-90 text-white'/>
         </div>
       </div>
     </div>

@@ -113,7 +113,7 @@ export default function Portfolio({ onHeightChange }) {
   */
 
   return (
-    <div className='relative flex flex-col border-2'>
+    <div className='relative flex flex-col'>
       <section ref={ref} id="home" className="h-screen w-full flex justify-center items-start sticky top-0 z-10 relative overflow-x-clip">
         <motion.div 
           className='z-50 absolute w-screen h-screen'
@@ -126,7 +126,7 @@ export default function Portfolio({ onHeightChange }) {
         </motion.div>
           <div className="w-full h-full flex justify-center items-center img-container md:bg-grid bg-no-repeat bg-center">
             <motion.div 
-              className="h-full w-11/12 md:w-9/12 flex flex-col justify-between pt-32 lg:pt-64 pb-10 border-2"
+              className="h-full w-11/12 md:w-9/12 flex flex-col justify-between pt-40 lg:pt-64 pb-10"
               initial={{
                 x: -200,
                 opacity: 0,

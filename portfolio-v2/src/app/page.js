@@ -127,7 +127,7 @@ export default function Home() {
     <div className='bg-[#161B22] relative'>
       
       <NavBar home={'#home'} height={pageHeight} width={width} className="hidden md:block"/>
-      <MobileNav home={'#home'} height={pageHeight} width={width} className='z-50 absolute md:hidden top-0 left-0 '/>
+      <MobileNav home={'#home'} height={pageHeight} width={width} className='z-100 md:hidden top-0 left-0 '/>
       <motion.div 
         className='hidden md:block glassmorphic py-1 px-1 rounded-l-lg right-0 fixed z-50 right-0 top-1/2'
         ref={scope}

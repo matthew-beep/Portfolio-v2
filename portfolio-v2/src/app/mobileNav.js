@@ -37,9 +37,9 @@ export default function MobileNav({ home, height }) {
   }, [prevScrollPos])
 
   return (
-    <header className='w-full fixed'>
-      <nav className="flex w-full h-20 py-3 pl-3 pr-10 justify-between items-center block md:hidden">
-          <div className='h-full flex justify-center items-center aspect-square text-white text-2xl font-poppins font-bold bg-[#7B4EE6] rounded-full p-3'>
+    <header className='w-full absolute h-32 flex z-50 block md:hidden justify-center items-end'>
+      <nav className="flex w-11/12 h-20 py-3 justify-between items-center block md:hidden h-1/2">
+          <div className='border-2 h-full flex justify-center items-center aspect-square text-lg md:text-2xl font-poppins font-bold border-white text-white rounded-full'>
             <Link href={home}>
               MH
             </Link>
