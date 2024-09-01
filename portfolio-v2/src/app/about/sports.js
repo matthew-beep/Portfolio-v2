@@ -10,7 +10,7 @@ export default function Sports() {
   return (
     <div className="text-white flex flex-col gap-4 font-inter text-lg w-11/12 md:w-10/12">
       <p>
-        Sports is one of the biggest hobbies I have in my life. Over the years, I have played soccer, basketball, track, volleyball, lacrosee, football, and even water polo.
+        Health and fitness is a part of my life that I take fairly seriously. Over the years, I have played soccer, basketball, track, volleyball, lacrosee, football, and even water polo.
       </p>
       <p>
         Currently, I am working as a User Interface Engineer, for <span className="text-[#7B4EE6] font-semiBold">ATS Automation</span>, where I design interface standards and templates for 

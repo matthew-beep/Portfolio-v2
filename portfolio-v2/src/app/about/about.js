@@ -25,14 +25,14 @@ export default function About({ onHeightChange }) {
       { 
         id: 1, 
         bgColor: '#FFFFFF', 
-        imageSrc: '/img/gradPhoto.jpg', 
+        imageSrc: '/img/gradresize.jpg', 
         altText: 'A Picture of Matthew Herradura',
         title: 'My Journey' 
       },
       { 
         id: 2, 
         bgColor: '#7B4EE6', 
-        imageSrc: '/img/luffy.gif', 
+        imageSrc: '/img/simontest.gif', 
         altText: 'A Gif of Luffy',
         title: 'Anime' 
       },
@@ -46,7 +46,7 @@ export default function About({ onHeightChange }) {
       { 
         id: 4, 
         bgColor: '#8474A8', 
-        imageSrc: '/img/allen.gif', 
+        imageSrc: '/img/giphy.gif', 
         altText: 'A Picture of Matthew Herradura',
         title: 'Sports' 
       },
@@ -154,9 +154,9 @@ export default function About({ onHeightChange }) {
           {displayed}
         </motion.div>
       </div>
-      <div className="w-full flex items-center md:items-start justify-center gap-10 mt-36 sm:mt-0">
+      <div className="w-full flex items-center lg:items-start justify-center gap-10 mt-36 md:mt-0">
         <div 
-          className="rounded-md bg-[#3E484C] p-1 hover:bg-[#7B4EE6] duration-200 transition-all cursor-pointer lg:hidden flex items-center justify-center h-12 w-48"
+          className="rounded-md bg-[#3E484C] p-1 hover:bg-[#7B4EE6] duration-200 transition-all cursor-pointer lg:hidden flex items-center justify-center h-12 px-3"
           onClick={() => {
             if(cards[0].id == 1){ 
               handleCardClick(cards[cards.length - 1].id);
@@ -186,7 +186,7 @@ export default function About({ onHeightChange }) {
             ease: 'easeInOut',
           }}
         >
-          <div className="sm:w-[17rem] md:w-[20rem] w-[15rem] h-auto">
+          <div className="sm:w-[17rem] xl:w-[20rem] w-[15rem] h-auto">
             {cards.map((card, index) => (
               <AboutCard 
               className="-translate-x/2"
@@ -201,7 +201,7 @@ export default function About({ onHeightChange }) {
           </div>
         </motion.div>
         <div 
-          className="rounded-md bg-[#3E484C] p-1 hover:bg-[#7B4EE6] duration-200 transition-all cursor-pointer lg:hidden flex items-center justify-center h-12 w-48"
+          className="rounded-md bg-[#3E484C] p-1 hover:bg-[#7B4EE6] duration-200 transition-all cursor-pointer lg:hidden flex items-center justify-center h-12 px-3"
           onClick={() => {
               if(cards[0].id == cards.length) { 
                 handleCardClick(1);

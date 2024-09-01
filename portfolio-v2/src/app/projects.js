@@ -51,7 +51,7 @@ export default function Projects({ work }) {
           onViewportEnter={() => startType(true)}
         >
           <div className='w-16 h-16 rounded-full absolute bg-[#161B22] top-0 left-1/2 -translate-y-1/2 -translate-x-1/2 flex overflow-hidden'>
-            <Link 
+            <Link
               className='w-full h-full flex flex-col items-center justify-center hover:bg-white rounded-full cursor-pointer relative'
               href='#home'
             >
@@ -60,7 +60,7 @@ export default function Projects({ work }) {
               Top
             </Link>
           </div>
-          <h3 className="flex font-inter text-[#7B4EE6] text-2xl mb-1 px-10">
+          <h3 className="flex font-inter text-[#7B4EE6] text-2xl mb-1 px-10 xl:px-0 mt-5 sm:mt-0">
             {type && <TypeAnimation
               sequence={[
                 'MY PORTFOLIO',
@@ -84,8 +84,8 @@ export default function Projects({ work }) {
               |
             </motion.div>
           </h3>
-          <h2 className='font-poppins font-bold text-5xl px-10'>Projects</h2>
-          <div className='m-auto w-full flex-col items-center flex md:flex-row xl:justify-between justify-center h-auto flex-wrap'>
+          <h2 className='font-poppins font-bold text-5xl px-10 xl:px-0'>Projects</h2>
+          <div className='m-auto w-full flex-col items-center flex lg:flex-row xl:justify-between justify-center h-auto flex-wrap'>
             {work.map((project, i) => (
               <Card content={project} key={i}/>
             ))}              

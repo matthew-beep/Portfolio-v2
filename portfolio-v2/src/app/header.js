@@ -75,8 +75,9 @@ export default function NavBar({ home, height }) {
                 <motion.li
                   className="flex flex-col relative"
                   whileHover="hover"
+                  initial={{color:  pathname === '/' ? 'rgba(255,255,255, 1)' : 'rgba(255,255,255, 0.5)'}}
                 >
-                  <Link href={home} className="text-white">Home</Link>
+                  <Link href={home} className="hover:text-white duration-200 ease-in'">Home</Link>
                   <motion.div
                     style={{
                       width: '100%',
@@ -96,8 +97,9 @@ export default function NavBar({ home, height }) {
                 <motion.li
                   className="flex flex-col relative"
                   whileHover="hover"
+                  initial={{color:  pathname === '/about' ? 'rgba(255,255,255, 1)' : 'rgba(255,255,255, 0.5)'}}
                 >
-                  <Link href="/about" className="text-white">About Me</Link>
+                  <Link href="/about" className='hover:text-white duration-200 ease-in'>About Me</Link>
                   <motion.div
                     style={{
                       width: '100%',
@@ -106,7 +108,9 @@ export default function NavBar({ home, height }) {
                       backgroundColor: '#7B4EE6',
                       bottom: 0,
                     }}
-                    initial={{ scaleX: pathname === '/about' ? 1 : 0 }}  // Initially show the line for the active link
+                    initial={{ 
+                      scaleX: pathname === '/about' ? 1 : 0,
+                    }}  // Initially show the line for the active link
                     variants={{
                       hover: { scaleX: 1 },  // Scale on hover
                     }}

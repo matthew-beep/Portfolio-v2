@@ -76,6 +76,7 @@ export default function Portfolio({ onHeightChange }) {
       alt: 'A photo of the ViZDAS project',
       link: 'https://dasway.ess.washington.edu/vizdas/',
       skills: ['React', 'Figma', 'UX Research', 'Wireframing'],
+      complete: true
     },
     {
       name: 'IMDb Redesign',
@@ -83,7 +84,8 @@ export default function Portfolio({ onHeightChange }) {
       image: '/img/imdb_svg.svg',
       alt: 'The imdB logo',
       link: '/files/imdbPres.pdf',
-      skills: ['UX Research', 'UX Design']
+      skills: ['UX Research', 'Personas', 'UX Design', 'Information Architecture'],
+      complete: true
     },
     {
       name: 'Blossom',
@@ -91,15 +93,17 @@ export default function Portfolio({ onHeightChange }) {
       image: '/img/blossom.jpg',
       alt: 'A photo of the Blossom project prototype',
       link: '/files/blossom.pdf',
-      skills: ['User Testing', 'Personas', 'UX Research', 'Wireframing']
+      skills: ['User Testing', 'Personas', 'UX Research', 'Wireframing'],
+      complete: true
     },
     {
-      name: 'IMDb Redesign',
-      description: 'An analysis of the Internet Movie Database\'s information architecture. Includes a collection of recommendations for improvement on IMDb\'s hierarchy of information related to labels, search, navigation, site mapping, etc.',
-      image: '/img/imdb_svg.svg',
-      alt: 'A photo of imdB',
+      name: 'What\'s Your Vibe (In Progress)',
+      description: 'A music web app which allows users to connect to their Spotify accounts and efficiently access and discover new music based on their mood.',
+      image: '/img/spotify.png',
+      alt: 'Spotify Logo',
       link: 'https://github.com/matthew-beep/',
-      skills: ['React', 'Figma', 'UX Research', 'Wireframing']
+      skills: ['React', 'Figma', 'Spotify API'],
+      complete: false
     },
   ];
 
