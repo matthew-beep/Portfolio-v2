@@ -58,7 +58,7 @@ export default function Card({content}) {
           <img src={require=(content.image)} className='h-full w-full object-cover rounded-sm'/>
         </motion.div>
         <Link className='flex gap-1 items-end project-title items-center' href={content.link} target='_blank'>
-          <h3 id="title" className='font-poppins font-bold text-xl lg:text-2xl'>{content.name}</h3>          
+          <h3 id="title" className='font-poppins font-bold sm:text-xl text-lg lg:text-2xl'>{content.name}</h3>          
           <motion.div
           className="h-auto flex items-start"
             variants={childVar}
@@ -74,7 +74,7 @@ export default function Card({content}) {
                   <Pill skills={skill} key={i}/>
               ))}   
           </div>
-          <p className='mb-3 md:mb-0 md:mt-3 font-inter text-md sm:text-lg min-h-32 max-h-36'>{content.description}</p>
+          <p className='mb-3 md:mb-0 md:mt-3 font-inter text-md sm:text-lg min-h-32'>{content.description}</p>
         </div>
       </motion.div>
     </div>

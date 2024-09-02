@@ -19,7 +19,7 @@ export default function Portfolio({ onHeightChange }) {
   const { scrollY } = useScroll()
   const blur = useTransform(scrollY, [200, 1000], ['0px', fullBlur]);
   const modal = useTransform(scrollY, [200, 1000], ['0%', fullOpaque]);
-  const [blurVal, setBlurVal] = useState(blur.get());
+  const [blurVal, setBlurVal] = useState(blur);
   const ref = useRef(null);
   useEffect(() => {
     // Set the height of the element
@@ -108,13 +108,7 @@ export default function Portfolio({ onHeightChange }) {
   ];
 
   const skills = ['HTML', 'CSS', 'JavaScipt', 'React', 'Tailwind', 'NextJS', 'Git','Figma', 'Adobe Illustrator', 'UX Research', 'Wireframing', 'Information Architecture'];
-;  /*
-  const background = (blurVal) => ({
-    filter: `blur(${blur.get()})`,
-    width: '100%',
-    height: '100%'
-  })
-  */
+ 
 
   return (
     <div className='relative flex flex-col'>
@@ -123,6 +117,7 @@ export default function Portfolio({ onHeightChange }) {
           className='z-50 absolute w-screen h-screen'
           style={{
             backdropFilter: `blur(${blurVal})`,
+            filter: `blur(${blurVal})`,
             backgroundColor: `rgba(0, 0, 0,${modalOpacity})`,
             pointerEvents: 'none'
           }}
@@ -130,7 +125,7 @@ export default function Portfolio({ onHeightChange }) {
         </motion.div>
           <div className="w-full h-full flex justify-center items-center img-container md:bg-grid bg-no-repeat bg-center">
             <motion.div 
-              className="h-full w-11/12 md:w-9/12 flex flex-col justify-between pt-40 lg:pt-64 pb-10"
+              className="h-full w-11/12 md:w-9/12 flex flex-col justify-between pt-32 lg:pt-64 lg:pb-10 pb-20"
               initial={{
                 x: -200,
                 opacity: 0,

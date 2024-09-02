@@ -66,24 +66,24 @@ export default function Footer() {
         </div>
         <div className='w-full lg:w-1/2 relative'>
           <div className='w-full h-full relative z-40 glassmorphic rounded-lg'>
-            <form className='w-full h-full p-5 text-[#161B22] font-poppins relative z-20 flex flex-col' ref={form} onSubmit={sendEmail}>
+            <form className='w-full h-full p-5 text-[#fff] font-poppins relative z-20 flex flex-col' ref={form} onSubmit={sendEmail}>
               <input 
                 type="text" 
                 placeholder='Your Name' 
-                className='ring-0 w-full p-2 rounded-lg bg-white focus:outline-none focus:ring focus:ring-[#7B4EE6] duration-200 transition-all easeInOut' 
+                className='ring-0 w-full p-2 rounded-lg bg-[#2F3843] focus:outline-none focus:ring focus:ring-[#7B4EE6] duration-200 transition-all easeInOut placeholder:text-[#95a1af]' 
                 name='name'
                 required
               />
               <input 
                 type="email" 
                 placeholder='Your Email' 
-                className='w-full p-2 mt-4 rounded-lg bg-white'
+                className='w-full p-2 mt-4 rounded-lg bg-[#2F3843] focus:outline-none focus:ring focus:ring-[#7B4EE6] duration-200 transition-all easeInOut placeholder:text-[#95a1af]'
                 name='email'
                 required 
               />
               <textarea 
                 placeholder='Your Message' 
-                className='w-full p-2 mt-4 rounded-lg bg-white flex-grow' 
+                className='w-full p-2 mt-4 rounded-lg bg-[#2F3843] flex-grow focus:outline-none focus:ring focus:ring-[#7B4EE6] duration-200 transition-all easeInOut placeholder:text-[#95a1af]' 
                 rows='4'
                 name='message'
                 required

@@ -119,7 +119,7 @@ export default function About({ onHeightChange }) {
     <div ref={ref} className='flex h-auto sm:min-h-screen w-9/12 m-auto lg:m-0 lg:w-full flex-col-reverse lg:flex-row-reverse pb-10 pt-10 lg:pb-0 md:pt-64 gap-20 lg:gap-0'>
       <div className="w-full flex-col flex gap-4 w-9/12">
         <div>
-          <h3 className="flex font-inter text-[#7B4EE6] text-2xl mb-1">
+          <h3 className="flex font-inter text-[#7B4EE6] text-xl lg:text-2xl mb-1">
             <TypeAnimation
               sequence={[
                 'ABOUT ME',
@@ -143,7 +143,7 @@ export default function About({ onHeightChange }) {
               |
             </motion.div>
           </h3>
-          <h1 className="text-white font-poppins font-bold text-5xl">
+          <h1 className="text-white font-poppins font-bold lg:text-5xl text-4xl">
             {cards[0].title}
           </h1>
         </div>
@@ -156,7 +156,7 @@ export default function About({ onHeightChange }) {
       </div>
       <div className="w-full flex items-center lg:items-start justify-center gap-10 mt-36 md:mt-0">
         <div 
-          className="rounded-md bg-[#3E484C] p-1 hover:bg-[#7B4EE6] duration-200 transition-all cursor-pointer lg:hidden flex items-center justify-center h-12 px-3"
+          className="rounded-md bg-[#3E484C] p-1 hover:bg-[#7B4EE6] duration-200 transition-all cursor-pointer lg:hidden flex items-center justify-center h-10"
           onClick={() => {
             if(cards[0].id == 1){ 
               handleCardClick(cards[cards.length - 1].id);
@@ -201,7 +201,7 @@ export default function About({ onHeightChange }) {
           </div>
         </motion.div>
         <div 
-          className="rounded-md bg-[#3E484C] p-1 hover:bg-[#7B4EE6] duration-200 transition-all cursor-pointer lg:hidden flex items-center justify-center h-12 px-3"
+          className="rounded-md bg-[#3E484C] p-1 hover:bg-[#7B4EE6] duration-200 transition-all cursor-pointer lg:hidden flex items-center justify-center h-10"
           onClick={() => {
               if(cards[0].id == cards.length) { 
                 handleCardClick(1);

@@ -27,7 +27,14 @@ export default function Projects({ work }) {
       showFile(false);
     }
     
-  }, [isInView])
+  }, [isInView]);
+
+  const handleScrollToHome = (e) => {
+    e.preventDefault();
+    const projectsSection = document.getElementById('home');
+    projectsSection.scrollIntoView({ behavior: 'smooth' });
+    window.history.pushState(null, '', '#home');
+  };
 
   // need to add nav bar outside of main
   return (
@@ -50,16 +57,20 @@ export default function Projects({ work }) {
           }}
           onViewportEnter={() => startType(true)}
         >
-          <div className='w-16 h-16 rounded-full absolute bg-[#161B22] top-0 left-1/2 -translate-y-1/2 -translate-x-1/2 flex overflow-hidden'>
+          <motion.div 
+            className='w-16 h-16 rounded-full absolute bg-[#161B22] top-0 left-1/2 -translate-y-1/2 -translate-x-1/2 flex overflow-hidden project-section-border'
+            whileHover={{backgroundColor: 'hsl(210, 17%, 5%)'}}
+          >
             <Link
-              className='w-full h-full flex flex-col items-center justify-center hover:bg-white rounded-full cursor-pointer relative'
+              className=' w-full h-full flex flex-col items-center justify-center rounded-full cursor-pointer relative'
               href='#home'
+              onClick={handleScrollToHome}
             >
-              <div className="absolute inset-0 project-section-border rounded-t-full" />
-              <FontAwesomeIcon className="text-3xl rotate-180" icon={faChevronDown}/>
+              <div className="absolute project-section-border rounded-t-full" />
+              <FontAwesomeIcon className="text-2xl rotate-180 mt-1" icon={faChevronDown}/>
               Top
             </Link>
-          </div>
+          </motion.div>
           <h3 className="flex font-inter text-[#7B4EE6] text-2xl mb-1 px-10 xl:px-0 mt-5 sm:mt-0">
             {type && <TypeAnimation
               sequence={[
