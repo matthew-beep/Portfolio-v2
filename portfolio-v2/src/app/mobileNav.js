@@ -35,6 +35,7 @@ export default function MobileNav({ home, height }) {
       window.addEventListener('scroll', handleScroll);
       return () => window.removeEventListener('scroll', handleScroll);
   }, [prevScrollPos])
+  
 
   return (
     <header className='w-full absolute h-32 flex z-50 block md:hidden justify-center items-end'>
