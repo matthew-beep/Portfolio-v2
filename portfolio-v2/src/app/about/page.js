@@ -3,7 +3,7 @@
 import NavBar from '../header'
 import About from './about'
 import Footer from '../footer'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import MobileNav from '../mobileNav';
 export default function Home() {
   const [pageHeight, setPageHeight] = useState(0);
