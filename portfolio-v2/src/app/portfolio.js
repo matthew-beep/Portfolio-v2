@@ -1,4 +1,3 @@
-
 'use client';
 import './fonts.css';
 import { useState, useEffect, useRef } from "react";
@@ -10,17 +9,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import Link  from 'next/link'
 import Projects from './projects';
-export default function Portfolio({ onHeightChange }) {
-  // need to add nav bar outside of main
+export default function Portfolio({ onHeightChange, width }) {
   const fullBlur = '30px';
-  const fullOpaque = '50%';
-  // const hash = window.location.hash;
+  const fullOpaque = width > 1024 ? '50%' : '75%';
+  //const mobileOpaque = '75%';
+
   const [modalOpacity, setModalOpacity] = useState();
-  const { scrollY } = useScroll()
+  const { scrollY } = useScroll();
   const blur = useTransform(scrollY, [200, 1000], ['0px', fullBlur]);
   const modal = useTransform(scrollY, [200, 1000], ['0%', fullOpaque]);
   const [blurVal, setBlurVal] = useState(blur);
   const ref = useRef(null);
+
+  /*
   useEffect(() => {
     // Set the height of the element
     if (ref.current) {
@@ -29,43 +30,7 @@ export default function Portfolio({ onHeightChange }) {
       console.log(rect.height);
     }
   }, [onHeightChange]);
-
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    setBlurVal(blur.get());
-    setModalOpacity(modal.get());
-  })
-  
-  useEffect(() => {
-    // Check initial scroll position on component mount
-    const handleInitialScroll = () => {
-      //console.log("Initial scroll");
-      const initialScrollY = window.scrollY;
-      setBlurVal(blur.get());
-      setModalOpacity(modal.get());
-    };
-
-    // Trigger the initial scroll check
-    //console.log(window.scrollY);
-    if(window.scrollY > 0 ) {
-      console.log('load blur');
-      handleInitialScroll();
-    }
-
-    // Add event listener to handle scroll updates
-    window.addEventListener('scroll', handleInitialScroll);
-
-    // Clean up the event listener on component unmount
-    return () => {
-      window.removeEventListener('scroll', handleInitialScroll);
-    };
-  }, []);
-
-  const handleScrollToProjects = (e) => {
-    e.preventDefault();
-    const projectsSection = document.getElementById('projects');
-    projectsSection.scrollIntoView({ behavior: 'smooth' });
-    window.history.pushState(null, '', '#projects');
-  };
+  */
 
   const projects = 
   [
@@ -108,6 +73,60 @@ export default function Portfolio({ onHeightChange }) {
   ];
 
   const skills = ['HTML', 'CSS', 'JavaScipt', 'React', 'Tailwind', 'NextJS', 'Git','Figma', 'Adobe Illustrator', 'UX Research', 'Wireframing', 'Information Architecture'];
+  /*
+  useEffect(() => {
+   
+    console.log('page loaded');
+    console.log(blur.get());
+    console.log(scrollPos);
+    console.log('scrollY:' + scrollY.get());
+    
+   console.log('test');
+   let max = Math.max(window.scrollY, 1000)
+   if (window.scrollY > 200) {
+    setBlurVal((window.scrollY - 200) / 800);
+    setModalOpacity((window.scrollY - 200) / 800);
+   }
+  }, [])
+    */
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    console.log("Page scroll: ", latest)
+  })
+  
+  useEffect(() => {
+    // Check initial scroll position on component mount
+    const handleInitialScroll = () => {;
+      const initialScrollY = window.scrollY;
+
+      setBlurVal(blur.get());
+      setModalOpacity(modal.get());
+    };
+
+    // initial scroll check
+    if(window.scrollY > 0 ) {
+      console.log('load blur');
+      handleInitialScroll();
+    }
+
+    window.addEventListener('scroll', handleInitialScroll);
+
+    return () => { //unmount
+      window.removeEventListener('scroll', handleInitialScroll);
+    };
+  }, []);
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    setBlurVal(blur.get());
+    setModalOpacity(modal.get());
+  })
+
+  const handleScrollToProjects = (e) => {
+    e.preventDefault();
+    const projectsSection = document.getElementById('projects');
+    projectsSection.scrollIntoView({ behavior: 'smooth' });
+    window.history.pushState(null, '', '#projects');
+  };
+
  
 
   return (
@@ -117,7 +136,6 @@ export default function Portfolio({ onHeightChange }) {
           className='z-50 absolute w-screen h-screen'
           style={{
             backdropFilter: `blur(${blurVal})`,
-            filter: `blur(${blurVal})`,
             backgroundColor: `rgba(0, 0, 0,${modalOpacity})`,
             pointerEvents: 'none'
           }}

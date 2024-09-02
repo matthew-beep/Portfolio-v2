@@ -31,9 +31,6 @@ export default function Home() {
   };
 
   const translateY = useTransform(scrollY, [0, 1000], ['0px', translate]);
-
-  const scrollSpring = useSpring(translateY, { stiffness: 300, damping: 100 });
-
     useEffect(() => { // detect scroll direction
       const handleScroll = () => {
         if (scrollY.get() > prevScrollY) {
@@ -58,10 +55,7 @@ export default function Home() {
       let scrollTimeout;
   
       const handleScroll = () => {
-        console.log('Scroll event detected');
-        
         if (!scrolling) {
-          console.log('User started scrolling');
           setScrolling(true);
         }
   
@@ -72,18 +66,15 @@ export default function Home() {
   
         // Set a new timeout to detect scroll end
         scrollTimeout = setTimeout(() => {
-          console.log('User stopped scrolling');
           setScrolling(false);
         }, 150); // Adjust the delay as needed
       };
   
       // Add the scroll event listener
-      console.log('Adding scroll event listener');
       window.addEventListener('scroll', handleScroll);
   
       // Clean up event listener on component unmount
       return () => {
-        console.log('Removing scroll event listener');
         window.removeEventListener('scroll', handleScroll);
         if (scrollTimeout) {
           clearTimeout(scrollTimeout);
@@ -101,7 +92,6 @@ export default function Home() {
             ease: 'easeOut'
           }
         })
-        console.log("go back to 0");
       }
     }, [scrolling]);
 
@@ -152,7 +142,7 @@ export default function Home() {
         </ul>
       </motion.div>
       <main id='home'className='relative z-10'>
-        <Portfolio onHeightChange={setPageHeight}/>
+        <Portfolio onHeightChange={setPageHeight} width={width}/>
       </main>
       <Footer />
     </div>
