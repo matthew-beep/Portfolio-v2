@@ -71,7 +71,7 @@ export default function Portfolio({ onHeightChange }) {
   [
     {
       name: 'VizDAS',
-      description: 'The first ever public facing Distributed Acoustic Sensing research tool. Built in collaboration with UW\'s Earth and Space Science Department and recognized as a Research Award Finalist at the iSchool Capstone Gala.',
+      description: 'The first ever public facing Distributed Acoustic Sensing research tool. Built in collaboration with UWs Earth and Space Science Department and recognized as a Research Award Finalist at the iSchool Capstone Gala.',
       image: '/img/vizdas.png',
       alt: 'A photo of the ViZDAS project',
       link: 'https://dasway.ess.washington.edu/vizdas/',
@@ -80,7 +80,7 @@ export default function Portfolio({ onHeightChange }) {
     },
     {
       name: 'IMDb Redesign',
-      description: 'An analysis of the Internet Movie Database\'s information architecture. Includes a collection of recommendations for improvement on IMDb\'s hierarchy of information related to labels, search, navigation, site mapping, etc.',
+      description: "An analysis of the Internet Movie Database's information architecture. Includes a collection of recommendations for improvement on IMDb's hierarchy of information related to labels, search, navigation, site mapping, etc.",
       image: '/img/imdb_svg.svg',
       alt: 'The imdB logo',
       link: '/files/imdbPres.pdf',
@@ -97,7 +97,7 @@ export default function Portfolio({ onHeightChange }) {
       complete: true
     },
     {
-      name: 'What\'s Your Vibe (In Progress)',
+      name: "What's Your Vibe (In Progress)",
       description: 'A music web app which allows users to connect to their Spotify accounts and efficiently access and discover new music based on their mood.',
       image: '/img/spotify.png',
       alt: 'Spotify Logo',
@@ -172,7 +172,7 @@ export default function Portfolio({ onHeightChange }) {
                       |
                     </motion.div>
                   </h3>
-                  <h1 className="font-poppins text-white text-4xl lg:text-5xl mb-3">Hey, I'm <span className="underline">Matt</span> 👋</h1>
+                  <h1 className="font-poppins text-white text-4xl lg:text-5xl mb-3">Hey, I&apos;m <span className="underline">Matt</span> 👋</h1>
                   <p className="text-white font-inter text-lg">I like to <span className="font-inter font-bold text-[#7B4EE6]">design</span> and <span className="font-inter font-bold text-[#7B4EE6]">develop</span> user interfaces.</p>
                 </motion.div>
                 <div className="xl:w-6/12 w-full h-full rounded-lg relative mt-16 lg:mt-10">
