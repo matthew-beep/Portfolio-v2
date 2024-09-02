@@ -16,7 +16,7 @@ export default function About({ onHeightChange }) {
   const ref = useRef(null);
   const [displayed, setDisplay] = useState(<Journey/>); // set text based on first card
   const [cardHover, setCardHover] = useState(false);
-  const [width, setWidth] = useState(window.innerWidth);
+  const [width, setWidth] = useState(0);
   const [text, setText] = useState('');
   const [revert, setRevert] = useState(false);
   const [hoverDisabled, setHoverDisabled] = useState(false);
@@ -99,21 +99,21 @@ export default function About({ onHeightChange }) {
   }, [cards])
 
   useEffect(() => {
-    const handleResize = () => {
+    if (typeof window !== 'undefined') {
+      // This code will only run on the client-side
+      const handleResize = () => {
+        setWidth(window.innerWidth);
+      };
+
+      window.addEventListener('resize', handleResize);
       setWidth(window.innerWidth);
-    };
 
-    // Add event listener
-    window.addEventListener('resize', handleResize);
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }
+  }, []);
 
-    // Initial log
-    console.log(`Current width: ${window.innerWidth}`);
-
-    // Cleanup the event listener on component unmount
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, [width]);
   // need to add nav bar outside of main
   return (
     <div ref={ref} className='flex h-auto sm:min-h-screen w-9/12 m-auto lg:m-0 lg:w-full flex-col-reverse lg:flex-row-reverse pb-10 pt-10 lg:pb-0 md:pt-64 gap-20 lg:gap-0'>

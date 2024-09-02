@@ -18,7 +18,7 @@ export default function Home() {
   const [translate, setTranslate] = useState('-100px');
   const [initialScroll, setInitialScroll] = useState(true);
   const [pageHeight, setPageHeight] = useState(0);
-  const [width, setWidth] = useState(window.innerWidth);
+  const [width, setWidth] = useState(0);
   const ref = useRef(null);
 
   const [scope, animate] = useAnimate();
@@ -106,21 +106,20 @@ export default function Home() {
     }, [scrolling]);
 
     useEffect(() => {
-      const handleResize = () => {
+      if (typeof window !== 'undefined') {
+        // This code will only run on the client-side
+        const handleResize = () => {
+          setWidth(window.innerWidth);
+        };
+  
+        window.addEventListener('resize', handleResize);
         setWidth(window.innerWidth);
-      };
   
-      // Add event listener
-      window.addEventListener('resize', handleResize);
-  
-      // Initial log
-      console.log(`Current width: ${window.innerWidth}`);
-  
-      // Cleanup the event listener on component unmount
-      return () => {
-        window.removeEventListener('resize', handleResize);
-      };
-    }, [width]);
+        return () => {
+          window.removeEventListener('resize', handleResize);
+        };
+      }
+    }, []);
 
   return (
     
