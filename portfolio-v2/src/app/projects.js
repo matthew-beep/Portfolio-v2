@@ -6,7 +6,6 @@ import { motion, useScroll, useMotionValueEvent, useTransform, useInView, inView
 import { TypeAnimation } from 'react-type-animation';
 
 import Card from './card';
-import Pill from './pill';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import Link  from 'next/link'

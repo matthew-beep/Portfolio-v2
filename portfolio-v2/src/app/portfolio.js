@@ -3,17 +3,14 @@ import './fonts.css';
 import { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useMotionValueEvent, useTransform, useInView, inView } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
-import Card from './card';
 import Pill from './pill';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import Link  from 'next/link'
 import Projects from './projects';
-export default function Portfolio({ onHeightChange, width }) {
+export default function Portfolio({ width }) {
   const fullBlur = '30px';
   const fullOpaque = width > 1024 ? '50%' : '75%';
-  //const mobileOpaque = '75%';
-
   const [modalOpacity, setModalOpacity] = useState();
   const { scrollY } = useScroll();
   const blur = useTransform(scrollY, [200, 1000], ['0px', fullBlur]);
@@ -21,22 +18,11 @@ export default function Portfolio({ onHeightChange, width }) {
   const [blurVal, setBlurVal] = useState(blur);
   const ref = useRef(null);
 
-  /*
-  useEffect(() => {
-    // Set the height of the element
-    if (ref.current) {
-      const rect = ref.current.getBoundingClientRect();
-      onHeightChange(rect.height); // Call the function
-      console.log(rect.height);
-    }
-  }, [onHeightChange]);
-  */
-
   const projects = 
   [
     {
       name: 'VizDAS',
-      description: 'The first ever public facing Distributed Acoustic Sensing research tool. Built in collaboration with UWs Earth and Space Science Department and recognized as a Research Award Finalist at the iSchool Capstone Gala.',
+      description: 'The first ever public facing research tool utilizing Distributed Acoustic Sensing (DAS). Built in collaboration with UWs Earth and Space Science Department and recognized as a Research Award Finalist at the iSchool Capstone Gala.',
       image: '/img/vizdas.png',
       alt: 'A photo of the ViZDAS project',
       link: 'https://dasway.ess.washington.edu/vizdas/',

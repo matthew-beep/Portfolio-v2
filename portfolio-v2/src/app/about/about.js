@@ -75,9 +75,6 @@ export default function About({ onHeightChange }) {
     }, 1000)
   };
 
-  useEffect(() => {
-    console.log(cards)
-  }, [cards]);
 
   useEffect(() => {
     // Step 1: Animate opacity to 0

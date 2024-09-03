@@ -95,7 +95,7 @@ export default function Home() {
       }
     }, [scrolling]);
 
-    useEffect(() => {
+    useEffect(() => { 
       if (typeof window !== 'undefined') {
         // This code will only run on the client-side
         const handleResize = () => {

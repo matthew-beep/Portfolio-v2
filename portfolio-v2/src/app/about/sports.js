@@ -10,12 +10,11 @@ export default function Sports() {
   return (
     <div className="text-white flex flex-col gap-4 font-inter text-lg w-11/12 md:w-10/12">
       <p>
-        Health and fitness is a part of my life that I take fairly seriously. Over the years, I have played soccer, basketball, track, volleyball, lacrosee, football, and even water polo.
+        Basketball and football are two of my favorite sports at the moment. I grew up as a big Patriots fan and would make an effort to watch the game every weekend. 
       </p>
       <p>
-        Currently, I am working as a User Interface Engineer, for <span className="text-[#7B4EE6] font-semiBold">ATS Automation</span>, where I design interface standards and templates for 
-        over 500 employees across the country as well as develop UIs for buildings based on user rrequirements and needs. Within my time, 
-        I have worked with and built interfaces for clients such as the <span className="text-[#7B4EE6] font-semiBold">Seattle Public Schools</span> system and <span className="text-[#7B4EE6] font-semiBold">Fred Hutch Cancer Center Campus</span>. 
+        Aside from just watching the game, I try to take physical activity fairly seriously. Over the years, I have played soccer, basketball, track, volleyball, lacrosee, football, and even water polo.
+        While I do not play in most of these sports anymore, you might catch me being active in the gym or a local intermural basketball team.
       </p>
     </div>
   );
