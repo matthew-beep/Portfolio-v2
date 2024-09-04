@@ -10,6 +10,7 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 export default function AboutCard({content, index, isHovered, onClick, revert}) {
   const controls = useAnimation();
   const [firstCard, setFirstCard] = useState(index == 0);
+  const slideUp = useAnimation();
   const initialState = {
     cards: [
       { rotate: 0, translateX: 0, translateY: 0, zIndex: 40 }, // cardOne
@@ -30,7 +31,6 @@ export default function AboutCard({content, index, isHovered, onClick, revert}) 
   const animatedVariant = initialState.animations[index];
 
   useEffect(() => {
-    console.log("card : " + index + " " + isHovered);
     if (isHovered) {
       controls.start(animatedVariant)
     } else {
@@ -44,32 +44,14 @@ export default function AboutCard({content, index, isHovered, onClick, revert}) 
     }
   }, [revert]);
 
-  /*
-        <motion.div className='w-full'
-        style={{
-          height: firstCard ? '0%' : '100%',
-          backgroundColor: content.bgColor
-        }}
-        whileHover={{
-          height: '0%',
-          transition: { 
-            duration: 0.3,
-            ease: [0.42, 0, 0.58, 1] 
-          },
-        }}
-      >
-      <img src={content.imageSrc} className='w-full h-full scale-125'/>
-      url(${content.imageSrc}) no-repeat center center`,
-        backgroundSize: 'cover'
-  */
-
   return (
     <motion.div 
       className='rounded-lg absolute overflow-hidden aspect-[5/7] sm:w-[17rem] xl:w-[20rem] w-[15rem] lg:cursor-pointer'
       style={{
         border: `3px solid ${content.bgColor}`,
         background: `linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 30%),  url(${content.imageSrc}) no-repeat 50% 50%`,
-        backgroundSize: '100% 100%'
+        backgroundSize: content.id == 1 ? '120% 120%' : 'cover' ,
+
       }}
       animate={controls}
       whileHover={{
@@ -99,8 +81,6 @@ export default function AboutCard({content, index, isHovered, onClick, revert}) 
       onClick={onClick}
     >
       <h3 className='text-white font-poppins text-2xl p-3 absolute'>{content.title}</h3>
-
-      
     </motion.div>
   );
 }

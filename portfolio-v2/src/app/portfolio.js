@@ -59,26 +59,7 @@ export default function Portfolio({ width }) {
   ];
 
   const skills = ['HTML', 'CSS', 'JavaScipt', 'React', 'Tailwind', 'NextJS', 'Git','Figma', 'Adobe Illustrator', 'UX Research', 'Wireframing', 'Information Architecture'];
-  /*
-  useEffect(() => {
-   
-    console.log('page loaded');
-    console.log(blur.get());
-    console.log(scrollPos);
-    console.log('scrollY:' + scrollY.get());
-    
-   console.log('test');
-   let max = Math.max(window.scrollY, 1000)
-   if (window.scrollY > 200) {
-    setBlurVal((window.scrollY - 200) / 800);
-    setModalOpacity((window.scrollY - 200) / 800);
-   }
-  }, [])
-    */
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    console.log("Page scroll: ", latest)
-  })
-  
+
   useEffect(() => {
     // Check initial scroll position on component mount
     const handleInitialScroll = () => {;
@@ -129,7 +110,7 @@ export default function Portfolio({ width }) {
         </motion.div>
           <div className="w-full h-full flex justify-center items-center img-container md:bg-grid bg-no-repeat bg-center">
             <motion.div 
-              className="h-full w-11/12 md:w-9/12 flex flex-col justify-between pt-32 lg:pt-64 lg:pb-10 pb-20"
+              className="h-full w-11/12 md:w-9/12 flex flex-col justify-between pt-32 md:pt-64 lg:pb-10 pb-20"
               initial={{
                 x: -200,
                 opacity: 0,
@@ -174,7 +155,7 @@ export default function Portfolio({ width }) {
                   <h1 className="font-poppins text-white text-4xl lg:text-5xl mb-3">Hey, I&apos;m <span className="underline">Matt</span> 👋</h1>
                   <p className="text-white font-inter text-lg">I like to <span className="font-inter font-bold text-[#7B4EE6]">design</span> and <span className="font-inter font-bold text-[#7B4EE6]">develop</span> user interfaces.</p>
                 </motion.div>
-                <div className="xl:w-6/12 w-full h-full rounded-lg relative mt-16 lg:mt-10">
+                <div className=" xl:w-6/12 w-full lg:h-full rounded-lg relative mt-16 lg:mt-10 md:h-auto">
                   <motion.div 
                     className="absolute bg-white rounded-full bottom-0 left-0 -translate-x-1/2 translate-y-1/2 gradient-circle z-0"
                     initial={{

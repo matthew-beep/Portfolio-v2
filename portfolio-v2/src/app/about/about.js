@@ -32,7 +32,7 @@ export default function About({ onHeightChange }) {
       { 
         id: 2, 
         bgColor: '#7B4EE6', 
-        imageSrc: '/img/simontest.gif', 
+        imageSrc: '/img/download.gif', 
         altText: 'A Gif of Luffy',
         title: 'Anime' 
       },
@@ -46,8 +46,8 @@ export default function About({ onHeightChange }) {
       { 
         id: 4, 
         bgColor: '#8474A8', 
-        imageSrc: '/img/giphy.gif', 
-        altText: 'A Picture of Matthew Herradura',
+        imageSrc: '/img/sports.gif', 
+        altText: 'A gif of highlight plays',
         title: 'Sports' 
       },
     ]
@@ -56,7 +56,7 @@ export default function About({ onHeightChange }) {
   const controls = useAnimation();
   const handleCardClick = (id) => {
     // Find the index of the clicked card
-    console.log("card clicked");
+
     setHoverDisabled(true);
     setRevert(true); 
     const cardIndex = cards.findIndex(card => card.id === id);
@@ -73,6 +73,7 @@ export default function About({ onHeightChange }) {
     setTimeout(() => {
       setHoverDisabled(false);
     }, 1000)
+    
   };
 
 
