@@ -245,7 +245,7 @@ export default function Portfolio({ width }) {
                   </motion.div>
                   <div className='flex flex-col w-full h-full glassmorphic relative z-30 rounded-lg p-4'>
                     <h3 className='text-white text-2xl font-poppins font-semibold pl-3 mb-4'>My Skills</h3>
-                    <div className='flex flex-wrap h-full w-full items-center px-3 gap-2 sm:gap-4'>
+                    <div className='flex flex-wrap h-full w-full items-center px-3 gap-2 sm:gap-3'>
                       {skills.map((skill, index) => (
                         <Pill 
                         skills={skill}
