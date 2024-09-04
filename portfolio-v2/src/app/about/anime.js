@@ -16,7 +16,7 @@ export default function Anime() {
       </p>
       <p>
         Currently, you might find me catching up on some older shows such as <span className="text-[#7B4EE6] font-bold"> Hajime No Ippo</span> and <span className="text-[#7B4EE6] font-bold"> Reborn!</span>. 
-        I've also picked up reading manga in my spare time and have been busy reading <span className="text-[#7B4EE6] font-bold"> Blue Lock</span> as well as <span className="text-[#7B4EE6] font-bold"> Jujutsu Kaisen</span>.
+        I&apos;ve also picked up reading manga in my spare time and have been busy reading <span className="text-[#7B4EE6] font-bold"> Blue Lock</span> as well as <span className="text-[#7B4EE6] font-bold"> Jujutsu Kaisen</span>.
         
       </p>
     </div>
