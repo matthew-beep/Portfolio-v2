@@ -5,7 +5,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Matthew Herradura",
-  description: "Matthew Herradura's UX Design and Front End Developer portfolio ",
+  description: "Matthew Herradura's UX Design and Front End Developer portfolio.",
 };
 
 export default function RootLayout({ children }) {
@@ -15,6 +15,8 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="logo.svg" type="image/svg+xml"/>
         <meta property="og:image" content="/img/website.png" />
         <meta property="og:title" content="Matthew Herradura" />
+        <title>Matthew Herradura</title>
+        <meta name="description" content="Matthew Herradura's UX Design and Front End Developer portfolio."></meta>
       </head>
       <body className={inter.className}>{children}</body>
     </html>

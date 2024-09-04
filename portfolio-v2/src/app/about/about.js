@@ -32,7 +32,7 @@ export default function About({ onHeightChange }) {
       { 
         id: 2, 
         bgColor: '#7B4EE6', 
-        imageSrc: '/img/download.gif', 
+        imageSrc: '/img/animegif.gif', 
         altText: 'A Gif of Luffy',
         title: 'Anime' 
       },
