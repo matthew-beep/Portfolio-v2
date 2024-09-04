@@ -14,6 +14,7 @@ export default function RootLayout({ children }) {
       <head>
         <link rel="icon" href="logo.svg" type="image/svg+xml"/>
         <meta property="og:image" content="/img/website.png" />
+        <meta property="og:title" content="Matthew Herradura" />
       </head>
       <body className={inter.className}>{children}</body>
     </html>
