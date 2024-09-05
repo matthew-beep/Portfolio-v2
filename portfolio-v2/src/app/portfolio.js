@@ -1,7 +1,7 @@
 'use client';
 import './fonts.css';
 import { useState, useEffect, useRef } from "react";
-import { motion, useScroll, useMotionValueEvent, useTransform, useInView, inView } from 'framer-motion';
+import { motion, useScroll, useMotionValueEvent, useTransform} from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import Pill from './pill';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -11,6 +11,7 @@ import Projects from './projects';
 export default function Portfolio({ width }) {
   const fullBlur = '30px';
   const fullOpaque = width > 1024 ? '50%' : '75%';
+  const mobile = width > 1024;
   const [modalOpacity, setModalOpacity] = useState();
   const { scrollY } = useScroll();
   const blur = useTransform(scrollY, [200, 1000], ['0px', fullBlur]);
@@ -22,7 +23,7 @@ export default function Portfolio({ width }) {
   [
     {
       name: 'VizDAS',
-      description: 'The first ever public facing research tool utilizing Distributed Acoustic Sensing (DAS). Built in collaboration with UWs Earth and Space Science Department and recognized as a Research Award Finalist at the iSchool Capstone Gala.',
+      description: <p>First ever data visualization and research tool using Distributed Acoustic Sensing (DAS), developed with UW's Earth and Space Science Department. Recognized as a Research Award Finalist at the <span><Link href="https://www.google.com/search?q=slow+design" target="_blank" className='underline-offset-2 underline hover:font-semiBold'>iSchool Capstone Gala</Link></span>. Case study coming soon.</p>,
       image: '/img/vizdas.png',
       alt: 'A photo of the ViZDAS project',
       link: 'https://dasway.ess.washington.edu/vizdas/',
@@ -31,7 +32,7 @@ export default function Portfolio({ width }) {
     },
     {
       name: 'IMDb Redesign',
-      description: "An analysis of the Internet Movie Database's information architecture. Includes a collection of recommendations for improvement on IMDb's hierarchy of information related to labels, search, navigation, site mapping, etc.",
+      description: <p>An analysis of the Internet Movie Database's information architecture. Includes a collection of recommendations for related to site mapping, search, navigation, labels, design, etc. A more detailed case study can be found <span><Link href="/files/imdbDoc.pdf" target="_blank" className='underline-offset-2 underline hover:font-semiBold'>here</Link></span>.</p>,
       image: '/img/imdb_svg.svg',
       alt: 'The imdB logo',
       link: '/files/imdbPres.pdf',
@@ -40,7 +41,7 @@ export default function Portfolio({ width }) {
     },
     {
       name: 'Blossom',
-      description: 'Blossom is a mobile application designed to help encourage young women pursue careers in male dominated STEM fields. A more detailed description of our research, design process, and final prototype can be found in the case study below.',
+      description: <p>Blossom is a mobile application designed to help encourage young women pursue careers in male dominated STEM fields. Click to the link to find detailed description of our research and design process.</p>,
       image: '/img/blossom.jpg',
       alt: 'A photo of the Blossom project prototype',
       link: '/files/blossom.pdf',
@@ -49,11 +50,11 @@ export default function Portfolio({ width }) {
     },
     {
       name: "What's Your Vibe (In Progress)",
-      description: 'A music web app which allows users to connect to their Spotify accounts and efficiently access and discover new music based on their mood.',
+      description: <p>A music web application which allows users to connect to their Spotify accounts and efficiently access and discover new music based on their mood. Project inspired by a previous <span><Link href="https://www.google.com/search?q=slow+design" target="_blank" className='underline-offset-2 underline hover:font-semiBold'>slow design</Link></span> analysis.</p>,
       image: '/img/spotify.png',
       alt: 'Spotify Logo',
-      link: 'https://github.com/matthew-beep/',
-      skills: ['React', 'Figma', 'Spotify API'],
+      link: '/files/Spotify.pdf',
+      skills: ['React', 'Figma', 'Spotify API', 'UX Research'],
       complete: false
     },
   ];
@@ -93,7 +94,6 @@ export default function Portfolio({ width }) {
     projectsSection.scrollIntoView({ behavior: 'smooth' });
     window.history.pushState(null, '', '#projects');
   };
-
  
 
   return (
@@ -110,7 +110,7 @@ export default function Portfolio({ width }) {
         </motion.div>
           <div className="w-full h-full flex justify-center items-center img-container md:bg-grid bg-no-repeat bg-center">
             <motion.div 
-              className="h-full w-11/12 md:w-9/12 flex flex-col justify-between pt-32 md:pt-64 lg:pb-10 pb-20"
+              className="h-full w-11/12 md:w-9/12 flex flex-col justify-between pt-32 md:pt-56 xl:pt-64 lg:pb-10 pb-20"
               initial={{
                 x: -200,
                 opacity: 0,
@@ -155,7 +155,7 @@ export default function Portfolio({ width }) {
                   <h1 className="font-poppins text-white text-4xl lg:text-5xl mb-3">Hey, I&apos;m <span className="underline">Matt</span> 👋</h1>
                   <p className="text-white font-inter text-lg">I like to <span className="font-inter font-bold text-[#7B4EE6]">design</span> and <span className="font-inter font-bold text-[#7B4EE6]">develop</span> user interfaces.</p>
                 </motion.div>
-                <div className=" xl:w-6/12 w-full lg:h-full rounded-lg relative mt-16 lg:mt-10 md:h-auto">
+                <div className=" xl:w-6/12 w-full lg:h-full rounded-lg relative mt-16 md:mt-5 md:h-auto">
                   <motion.div 
                     className="absolute bg-white rounded-full bottom-0 left-0 -translate-x-1/2 translate-y-1/2 gradient-circle z-0"
                     initial={{
@@ -288,7 +288,7 @@ export default function Portfolio({ width }) {
             <div className="hidden xl:block absolute w-72 h-72 mb-1 bg-white rounded-full bottom-0 right-0 translate-x-1/2 translate-y-1 gradient-circle z-0"></div>
           </div>
       </section>
-      <Projects work={projects}/>
+      <Projects work={projects} allowLink={mobile}/>
     </div>
   );
 }

@@ -11,7 +11,7 @@ import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import Link  from 'next/link'
 
 
-export default function Projects({ work }) {
+export default function Projects({ work, allowLink }) {
 
   const ref = useRef(null);
   const isInView = useInView(ref, {amount: 0.01}); // gonna need to check scroll position too
@@ -97,7 +97,7 @@ export default function Projects({ work }) {
           <h2 className='font-poppins font-bold text-5xl px-10 xl:px-0'>Projects</h2>
           <div className='m-auto w-full flex-col items-center flex lg:flex-row xl:justify-between justify-center h-auto flex-wrap'>
             {work.map((project, i) => (
-              <Card content={project} key={i}/>
+              <Card content={project} key={i} allowLink={allowLink}/>
             ))}              
           </div>
         </motion.div>

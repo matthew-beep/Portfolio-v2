@@ -16,7 +16,6 @@ export default function Home() {
   const [scrollDirection, setScrollDirection] = useState('down');
   const [prevScrollY, setPrevScrollY] = useState(0);
   const [translate, setTranslate] = useState('-100px');
-  const [initialScroll, setInitialScroll] = useState(true);
   const [pageHeight, setPageHeight] = useState(0);
   const [width, setWidth] = useState(0);
   const ref = useRef(null);
@@ -29,6 +28,10 @@ export default function Home() {
     down: {y:10},
     stop: {y:0}
   };
+  
+  useEffect(() =>{
+    console.log(width);
+  })
 
   const translateY = useTransform(scrollY, [0, 1000], ['0px', translate]);
     useEffect(() => { // detect scroll direction
@@ -36,14 +39,12 @@ export default function Home() {
         if (scrollY.get() > prevScrollY) {
           setScrollDirection('down');
           setTranslate('-100px')
-          //console.log('Scrolling down');
           animate(scope.current, 
             {y:'-100px'})
         } else {
           setScrollDirection('up');
           setTranslate('100px')
           animate(scope.current, {y:'100px'})
-          //console.log('Scrolling up');
         }
         setPrevScrollY(scrollY.get());
       };
