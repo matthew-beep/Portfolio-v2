@@ -23,7 +23,7 @@ export default function Portfolio({ width }) {
   [
     {
       name: 'VizDAS',
-      description: <p>First ever data visualization and research tool using Distributed Acoustic Sensing (DAS), developed with UW's Earth and Space Science Department. Recognized as a Research Award Finalist at the <span><Link href="https://www.google.com/search?q=slow+design" target="_blank" className='underline-offset-2 underline hover:font-semiBold'>iSchool Capstone Gala</Link></span>. Case study coming soon.</p>,
+      description: <p>First ever data visualization and research tool using Distributed Acoustic Sensing (DAS), developed with UW&apos;s Earth and Space Science Department. Recognized as a Research Award Finalist at the <span><Link href="https://www.google.com/search?q=slow+design" target="_blank" className='underline-offset-2 underline hover:font-semiBold'>iSchool Capstone Gala</Link></span>. Case study coming soon.</p>,
       image: '/img/vizdas.png',
       alt: 'A photo of the ViZDAS project',
       link: 'https://dasway.ess.washington.edu/vizdas/',
@@ -32,7 +32,7 @@ export default function Portfolio({ width }) {
     },
     {
       name: 'IMDb Redesign',
-      description: <p>An analysis of the Internet Movie Database's information architecture. Includes a collection of recommendations for related to site mapping, search, navigation, labels, design, etc. A more detailed case study can be found <span><Link href="/files/imdbDoc.pdf" target="_blank" className='underline-offset-2 underline hover:font-semiBold'>here</Link></span>.</p>,
+      description: <p>An analysis of the Internet Movie Database&apos;s information architecture. Includes a collection of recommendations for related to site mapping, search, navigation, labels, design, etc. A more detailed case study can be found <span><Link href="/files/imdbDoc.pdf" target="_blank" className='underline-offset-2 underline hover:font-semiBold'>here</Link></span>.</p>,
       image: '/img/imdb_svg.svg',
       alt: 'The imdB logo',
       link: '/files/imdbPres.pdf',
