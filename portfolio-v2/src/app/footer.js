@@ -1,8 +1,6 @@
 
 'use client';
 import './fonts.css';
-import github from '../../public/img/github.svg';
-import linkedin from '../../public/img/linkedin.svg';
 import { useState, useRef } from "react";
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
