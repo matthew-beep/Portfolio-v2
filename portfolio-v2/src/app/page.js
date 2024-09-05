@@ -29,10 +29,6 @@ export default function Home() {
     stop: {y:0}
   };
   
-  useEffect(() =>{
-    console.log(width);
-  })
-
   const translateY = useTransform(scrollY, [0, 1000], ['0px', translate]);
     useEffect(() => { // detect scroll direction
       const handleScroll = () => {

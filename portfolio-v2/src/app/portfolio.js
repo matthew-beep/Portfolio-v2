@@ -72,7 +72,6 @@ export default function Portfolio({ width }) {
 
     // initial scroll check
     if(window.scrollY > 0 ) {
-      console.log('load blur');
       handleInitialScroll();
     }
 
