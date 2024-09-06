@@ -23,7 +23,7 @@ export default function Portfolio({ width }) {
   [
     {
       name: 'VizDAS',
-      description: <p>First ever data visualization and research tool using Distributed Acoustic Sensing (DAS), developed with UW&apos;s Earth and Space Science Department. Recognized as a Research Award Finalist at the <span><Link href="https://www.google.com/search?q=slow+design" target="_blank" className='underline-offset-2 underline hover:font-semiBold'>iSchool Capstone Gala</Link></span>. Case study coming soon.</p>,
+      description: <p>First ever data visualization and research tool using Distributed Acoustic Sensing (DAS), developed with UW&apos;s Earth and Space Science Department. Recognized as a Research Award Finalist at the <span><Link href="https://ischool.uw.edu/capstone/projects/2023/interactive-data-visualization-distributed-acoustic-sensing" target="_blank" className='underline-offset-2 underline hover:font-semiBold'>iSchool Capstone Gala</Link></span>. Case study coming soon.</p>,
       image: '/img/vizdas.png',
       alt: 'A photo of the ViZDAS project',
       link: 'https://dasway.ess.washington.edu/vizdas/',
