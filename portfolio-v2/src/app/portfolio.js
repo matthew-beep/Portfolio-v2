@@ -59,7 +59,7 @@ export default function Portfolio({ width }) {
     }
   ];
 
-  const skills = ['HTML', 'CSS', 'JavaScipt', 'React', 'Tailwind', 'NextJS', 'Git','Figma', 'Adobe Illustrator', 'UX Research', 'Wireframing', 'Information Architecture'];
+  const skills = ['HTML', 'CSS', 'JavaScipt', 'React', 'Tailwind', 'Next.js', 'Node.js', 'TypeScript', 'Firebase', 'PHP', 'SQL', 'Git','Figma', 'Adobe Illustrator', 'UX Research', 'Wireframing', 'Information Architecture'];
 
   useEffect(() => {
     // Check initial scroll position on component mount
