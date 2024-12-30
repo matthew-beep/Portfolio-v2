@@ -66,7 +66,7 @@ export default function NavBar({ home, height }) {
                 }}
                 transition={{ duration: 0.5, ease: 'easeInOut' }}              
               >
-                <div className='h-full flex justify-center items-center aspect-square text-white text-2xl font-poppins font-bold bg-[#7B4EE6] rounded-full p-3'>
+                <div className='flex justify-center items-center aspect-square text-white text-2xl font-poppins font-bold bg-[#7B4EE6] rounded-full p-3'>
                   <Link href={home}>
                     MH
                   </Link>

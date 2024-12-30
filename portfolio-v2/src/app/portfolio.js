@@ -29,6 +29,15 @@ export default function Portfolio({ width }) {
       link: 'https://dasway.ess.washington.edu/vizdas/',
       skills: ['React', 'Figma', 'UX Research', 'Wireframing'],
       complete: true
+    },    
+    {
+      name: "Wedding Website",
+      description: <p>A wedding website made for friends. Project designed in Figma and built using React, TypeScript, and Next.js. Includes a user identification sign-in as well as rsvp management/guest tracking utilizing Firebase. Please contact me for access.</p>,
+      image: '/img/wedding.gif',
+      alt: 'A gif of a wedding website',
+      link: 'https://anitajesus4ever.com',
+      skills: ['Figma', 'React', 'Next.js','TypeScript','Firebase'],
+      complete: false
     },
     {
       name: 'IMDb Redesign',
@@ -47,16 +56,7 @@ export default function Portfolio({ width }) {
       link: '/files/blossom.pdf',
       skills: ['User Testing', 'Personas', 'UX Research', 'Wireframing'],
       complete: true
-    },
-    {
-      name: "What's Your Vibe (In Progress)",
-      description: <p>A music web application which allows users to connect to their Spotify accounts and efficiently access and discover new music based on their mood. Project inspired by a previous <span><Link href="https://www.google.com/search?q=slow+design" target="_blank" className='underline-offset-2 underline hover:font-semiBold'>slow design</Link></span> analysis.</p>,
-      image: '/img/spotify.png',
-      alt: 'Spotify Logo',
-      link: '/files/Spotify.pdf',
-      skills: ['React', 'Figma', 'Spotify API', 'UX Research'],
-      complete: false
-    },
+    }
   ];
 
   const skills = ['HTML', 'CSS', 'JavaScipt', 'React', 'Tailwind', 'NextJS', 'Git','Figma', 'Adobe Illustrator', 'UX Research', 'Wireframing', 'Information Architecture'];
