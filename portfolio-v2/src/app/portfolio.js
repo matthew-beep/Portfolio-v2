@@ -24,9 +24,9 @@ export default function Portfolio({ width }) {
     {
       name: 'Study Space (In Progress)',
       description: <p>A fully customizable, cozy workspace based around the pomodoro method. Work efficiently with organizable sticky notes and pet companions. Cross platform syncing and user authentication in progress.</p>,
-      image: '/img/studyspace.png',
+      image: '/img/studyspace.gif',
       alt: 'A photo of the Study Space web application',
-      link: '/files/blossom.pdf',
+      link: 'https://study-space-nine.vercel.app/',
       skills: ['UX Design', 'Next.js', 'TypeScript', 'Zustand', 'Supabase'],
       complete: true
     },
