@@ -22,6 +22,15 @@ export default function Portfolio({ width }) {
   const projects = 
   [
     {
+      name: 'Study Space (In Progress)',
+      description: <p>A fully customizable, cozy workspace based around the pomodoro method. Work efficiently with organizable sticky notes and pet companions. Cross platform syncing and user authentication in progress.</p>,
+      image: '/img/studyspace.png',
+      alt: 'A photo of the Study Space web application',
+      link: '/files/blossom.pdf',
+      skills: ['UX Design', 'Next.js', 'TypeScript', 'Zustand', 'Supabase'],
+      complete: true
+    },
+    {
       name: 'VizDAS',
       description: <p>First ever data visualization and research tool using Distributed Acoustic Sensing (DAS), developed with UW&apos;s Earth and Space Science Department. Recognized as a Research Award Finalist at the <span><Link href="https://ischool.uw.edu/capstone/projects/2023/interactive-data-visualization-distributed-acoustic-sensing" target="_blank" className='underline-offset-2 underline hover:font-semiBold'>iSchool Capstone Gala</Link></span>. Case study coming soon.</p>,
       image: '/img/vizdas.png',
@@ -35,7 +44,7 @@ export default function Portfolio({ width }) {
       description: <p>A wedding website made for friends. Project designed in Figma and built using React, TypeScript, and Next.js. Includes a user identification sign-in as well as rsvp management/guest tracking utilizing Firebase. Please contact me for access.</p>,
       image: '/img/wedding.gif',
       alt: 'A gif of a wedding website',
-      link: 'https://anitajesus4ever.com',
+      link: 'https://wedding-v2-yot1-git-main-matthewbeeps-projects.vercel.app/',
       skills: ['Figma', 'React', 'Next.js','TypeScript','Firebase'],
       complete: false
     },
@@ -46,15 +55,6 @@ export default function Portfolio({ width }) {
       alt: 'The imdB logo',
       link: '/files/imdbPres.pdf',
       skills: ['UX Research', 'Personas', 'UX Design', 'Information Architecture'],
-      complete: true
-    },
-    {
-      name: 'Blossom',
-      description: <p>Blossom is a mobile application designed to help encourage young women pursue careers in male dominated STEM fields. Click to the link to find detailed description of our research and design process.</p>,
-      image: '/img/blossom.jpg',
-      alt: 'A photo of the Blossom project prototype',
-      link: '/files/blossom.pdf',
-      skills: ['User Testing', 'Personas', 'UX Research', 'Wireframing'],
       complete: true
     }
   ];
