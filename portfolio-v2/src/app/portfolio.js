@@ -24,9 +24,9 @@ export default function Portfolio({ width }) {
     {
       name: 'Tally',
       description: <p>A free expense-splitting app, like Splitwise without the paywall. Groups log shared costs, and Tally tracks who paid what and who owes whom. Includes group invites, settle-ups, notifications, and expense comments.</p>,
-      image: '/img/imdb_svg.svg',
-      alt: 'The imdB logo',
-      link: 'https://tally-eight.vercel.app/',
+      image: '/img/tally.png',
+      alt: 'The Tally wordmark on a cream background',
+      link: 'https://tally-4gnh.vercel.app/',
       skills: ['Next.js', 'TypeScript', 'Supabase', 'TanStack Query', 'Zustand'],
       complete: true
     },
