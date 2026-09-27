@@ -22,6 +22,15 @@ export default function Portfolio({ width }) {
   const projects = 
   [
     {
+      name: 'Tally',
+      description: <p>A free expense-splitting app, like Splitwise without the paywall. Groups log shared costs, and Tally tracks who paid what and who owes whom. Includes group invites, settle-ups, notifications, and expense comments.</p>,
+      image: '/img/imdb_svg.svg',
+      alt: 'The imdB logo',
+      link: 'https://tally-eight.vercel.app/',
+      skills: ['Next.js', 'TypeScript', 'Supabase', 'TanStack Query', 'Zustand'],
+      complete: true
+    },
+    {
       name: 'Study Space (In Progress)',
       description: <p>A fully customizable, cozy workspace based around the pomodoro method. Work efficiently with organizable sticky notes and pet companions. Cross platform syncing and user authentication in progress.</p>,
       image: '/img/studyspace.gif',
